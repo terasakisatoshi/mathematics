@@ -17,3 +17,6 @@ Block math:
 $$
 \sum_{n=1}^{\infty} \frac{1}{n^{s}}
 $$
+
+Author Satoshi Terasaki
+https://terasakisatoshi.github.io
