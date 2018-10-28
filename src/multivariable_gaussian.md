@@ -1,10 +1,10 @@
 $$
-f(\mathbf{x}) =
+f(\boldsymbol{x}) =
 \frac{1}{(2\pi)^{n/2} \sqrt{\det\Sigma}}
 \exp\left(
         -\frac{1}{2}
-        (\mathbf{x}-\boldsymbol{\mu})^{\top}
+        (\boldsymbol{x}-\boldsymbol{\mu})^{\top}
          \Sigma^{-1}
-        (\mathbf{x}-\boldsymbol{\mu})
+        (\boldsymbol{x}-\boldsymbol{\mu})
     \right)
 $$
