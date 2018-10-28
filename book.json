@@ -1,3 +1,4 @@
 {
-  "plugins": ["katex"]
+    "root": "./docs",
+    "plugins": ["katex"]
 }
