@@ -4,10 +4,13 @@ I will make some topics about mathematics.
 
 $$ \sum_{n=1}^{\infty} \frac{1}{n^{s}} $$
 
-The equation above is written by KaTeX engine.
+The equation above is written by MathJax engine.
 See more detail:
+https://github.com/GitbookIO/plugin-mathjax
 
-https://github.com/GitbookIO/plugin-katex
+~~The equation above is written by KaTeX engine.See more detail:https://github.com/GitbookIO/plugin-katex~~
+
+I will use KaTex engine when gitbook supports `\boldsymbol`.
 
 inline mode:
 
