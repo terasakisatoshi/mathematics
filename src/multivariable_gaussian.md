@@ -91,17 +91,21 @@ $$
 と定める. また, $$\boldsymbol{z}=\boldsymbol{x}-\mathbb{E}[\boldsymbol{x}] $$とおいたとき,
 
 $$
-(\boldsymbol{x}-\mathbb{E}[\boldsymbol{x}])(\boldsymbol{x}-\mathbb{E}[\boldsymbol{x}])^{\top} =
-\boldsymbol{z} \boldsymbol{z}^{\top} =
-\begin{bmatrix} z_1\\z_2\\ \vdots \\z_n \end{bmatrix} [z_1, z_2, \dots, z_n] =
+\begin{align}
+(\boldsymbol{x}-\mathbb{E}[\boldsymbol{x}])(\boldsymbol{x}-\mathbb{E}[\boldsymbol{x}])^{\top} &=
+\boldsymbol{z} \boldsymbol{z}^{\top} \\
+ &=
+\begin{bmatrix} z_1\\z_2\\ \vdots \\z_n \end{bmatrix} [z_1, z_2, \dots, z_n] \\
+&=
 \begin{bmatrix}
 z_1^2   & z_1 z_2 & \dots  & z_1 z_n \\
 z_2 z_1 & z_2^2   & \dots  & z_2 z_n \\
 z_3 z_1 & z_3 z_2 & \ddots & z_3 z_n \\
 \vdots  & \vdots  &        & \vdots  \\
 z_n z_1 & z_n z_2 & \dots  & z_n^2   
-\end{bmatrix}
-=\left[z_{i}z_{j}\right]_{i,j=1}^n
+\end{bmatrix} \\
+&=\left[z_{i}z_{j}\right]_{i,j=1}^n
+\end{align}
 $$
 
 であることに注意して行列の要素ごとに期待値をとるオペレータ, つまり
@@ -144,7 +148,7 @@ $$
 =
 \left[\sum_{k,l=1}^n t_{ik}t_{jl} \delta_{k,l} \right]_{i,j=1}^n
 =
-\left[ t_{ij} t_{jk} \right] = T T^{\top}.
+\left[ \sum_{k=1}^n t_{ij} t_{jk} \right]_{i,j=1}^n = T T^{\top}.
 $$
 
 よって, 示したいことが示された.
