@@ -1,168 +1,724 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>multivariable_gaussian</title><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    jax: ["input/TeX","output/HTML-CSS"],
+    extensions: ["[a11y]/accessibility-menu.js"],
+    'HTML-CSS': {
+      availableFonts: [],
+      webFont: 'TeX',
+      undefinedFamily: "serif",
+      mtextFontInherit: true,
+    },
+    TeX: {
+  "Macros": {},
+  "equationNumbers": {},
+  "extensions": [
+    "AMSmath.js",
+    "AMSsymbols.js",
+    "noErrors.js",
+    "noUndefined.js"
+  ]
+},
+    showMathMenu: true
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js"></script>
+    <style>.emoji {
+  max-width: 1em !important;
+}
+del {
+  text-decoration: none;
+  position: relative;
+}
+del::after {
+  border-bottom: 1px solid black;
+  content: '';
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+ul.contains-task-list li.task-list-item {
+  position: relative;
+  list-style-type: none;
+}
+ul.contains-task-list li.task-list-item input.task-list-item-checkbox {
+  position: absolute;
+  transform: translateX(-100%);
+  width: 26px;
+}
+span.critic.comment {
+  position: relative;
+}
+span.critic.comment::before {
+  content: '\1f4ac';
+  position: initial;
+}
+span.critic.comment > span {
+  display: none;
+}
+span.critic.comment:hover > span {
+  display: initial;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  border: 1px solid;
+  border-radius: 5px;
+  max-height: 4em;
+  overflow: auto;
+}
+span.critic.comment:focus > span {
+  display: initial;
+  text-decoration: underline;
+  position: initial;
+  top: auto;
+  left: auto;
+  border: initial;
+  border-radius: initial;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  background-color: transparent;
+}
 
-<!DOCTYPE HTML>
-<html lang="" >
-    <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>多変数のガウシアン · GitBook</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        
-        
-        
-    
-    <link rel="stylesheet" href="../gitbook/style.css">
+body {
+  overflow: initial !important;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  line-height: 1.6;
+  word-wrap: break-word;
+  padding: 30px;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+}
+body > *:first-child {
+  margin-top: 0 !important;
+}
+body > *:last-child {
+  margin-bottom: 0 !important;
+}
+body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+body .absent {
+  color: #c00;
+}
+body .anchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+body .anchor:focus {
+  outline: none;
+}
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+body h1 .octicon-link,
+body h2 .octicon-link,
+body h3 .octicon-link,
+body h4 .octicon-link,
+body h5 .octicon-link,
+body h6 .octicon-link {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+body h1:hover .anchor,
+body h2:hover .anchor,
+body h3:hover .anchor,
+body h4:hover .anchor,
+body h5:hover .anchor,
+body h6:hover .anchor {
+  padding-left: 8px;
+  margin-left: -30px;
+  text-decoration: none;
+}
+body h1:hover .anchor .octicon-link,
+body h2:hover .anchor .octicon-link,
+body h3:hover .anchor .octicon-link,
+body h4:hover .anchor .octicon-link,
+body h5:hover .anchor .octicon-link,
+body h6:hover .anchor .octicon-link {
+  display: inline-block;
+}
+body h1 tt,
+body h2 tt,
+body h3 tt,
+body h4 tt,
+body h5 tt,
+body h6 tt,
+body h1 code,
+body h2 code,
+body h3 code,
+body h4 code,
+body h5 code,
+body h6 code {
+  font-size: inherit;
+}
+body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+body h1 .anchor {
+  line-height: 1;
+}
+body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+body h2 .anchor {
+  line-height: 1;
+}
+body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+body h3 .anchor {
+  line-height: 1.2;
+}
+body h4 {
+  font-size: 1.25em;
+}
+body h4 .anchor {
+  line-height: 1.2;
+}
+body h5 {
+  font-size: 1em;
+}
+body h5 .anchor {
+  line-height: 1.1;
+}
+body h6 {
+  font-size: 1em;
+  color: #777;
+}
+body h6 .anchor {
+  line-height: 1.1;
+}
+body p,
+body blockquote,
+body ul,
+body ol,
+body dl,
+body table,
+body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+body ul,
+body ol {
+  padding-left: 2em;
+}
+body ul.no-list,
+body ol.no-list {
+  padding: 0;
+  list-style-type: none;
+}
+body ul ul,
+body ul ol,
+body ol ol,
+body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+body li > p {
+  margin-top: 16px;
+}
+body dl {
+  padding: 0;
+}
+body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+body blockquote > :first-child {
+  margin-top: 0;
+}
+body blockquote > :last-child {
+  margin-bottom: 0;
+}
+body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+body table th {
+  font-weight: bold;
+}
+body table th,
+body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body .emoji {
+  max-width: none;
+}
+body span.frame {
+  display: block;
+  overflow: hidden;
+}
+body span.frame > span {
+  display: block;
+  float: left;
+  width: auto;
+  padding: 7px;
+  margin: 13px 0 0;
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+body span.frame span img {
+  display: block;
+  float: left;
+}
+body span.frame span span {
+  display: block;
+  padding: 5px 0 0;
+  clear: both;
+  color: #333;
+}
+body span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+body span.align-center > span {
+  display: block;
+  margin: 13px auto 0;
+  overflow: hidden;
+  text-align: center;
+}
+body span.align-center span img {
+  margin: 0 auto;
+  text-align: center;
+}
+body span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+body span.align-right > span {
+  display: block;
+  margin: 13px 0 0;
+  overflow: hidden;
+  text-align: right;
+}
+body span.align-right span img {
+  margin: 0;
+  text-align: right;
+}
+body span.float-left {
+  display: block;
+  float: left;
+  margin-right: 13px;
+  overflow: hidden;
+}
+body span.float-left span {
+  margin: 13px 0 0;
+}
+body span.float-right {
+  display: block;
+  float: right;
+  margin-left: 13px;
+  overflow: hidden;
+}
+body span.float-right > span {
+  display: block;
+  margin: 13px auto 0;
+  overflow: hidden;
+  text-align: right;
+}
+body code,
+body tt {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0, 0, 0, 0.04);
+  border-radius: 3px;
+}
+body code:before,
+body tt:before,
+body code:after,
+body tt:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+body code br,
+body tt br {
+  display: none;
+}
+body del code {
+  text-decoration: inherit;
+}
+body pre > code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+body .highlight {
+  margin-bottom: 16px;
+}
+body .highlight pre,
+body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+body pre {
+  word-wrap: normal;
+}
+body pre code,
+body pre tt {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+body pre code:before,
+body pre tt:before,
+body pre code:after,
+body pre tt:after {
+  content: normal;
+}
+body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+span.critic.comment > span {
+  background-color: #fff;
+}
+a {
+  color: #337ab7;
+}
 
-    
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
-        
+.slime-flash-highlight .region {
+  background-color: #0098ff;
+  opacity: 1.0;
+  transition: opacity 0.75s;
+}
+.slime-flash-highlight.animated .region {
+  opacity: 0.0;
+}
 
-    
+.bracket-matcher .region {
+  border-bottom: 1px dotted lime;
+  position: absolute;
+}
+.line-number.bracket-matcher.bracket-matcher {
+  color: #868686;
+  background-color: #39382e;
+}
 
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
+pre.editor-colors .lisp-syntax-error .region {
+  background-color: rgba(204, 0, 0, 0.5) !important;
+}
 
-        
-    
-    
-    <meta name="HandheldFriendly" content="true"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
-    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+.spell-check-misspelling .region {
+  border-bottom: 2px dotted rgba(255, 51, 51, 0.75);
+}
+.spell-check-corrections {
+  width: 25em !important;
+}
 
-    
-    
-    <link rel="prev" href="../" />
-    
+pre.editor-colors {
+  background-color: #272822;
+  color: white;
+}
+pre.editor-colors .wrap-guide {
+  background-color: #5d5f51;
+}
+pre.editor-colors .indent-guide {
+  box-shadow: inset 1px 0 #424439;
+}
+pre.editor-colors .invisible-character {
+  color: #4f5145;
+}
+pre.editor-colors .gutter {
+  background-color: #272822;
+  color: #868686;
+}
+pre.editor-colors .gutter .line-number.cursor-line {
+  background-color: #39382e;
+  color: #868686;
+}
+pre.editor-colors .gutter .line-number.cursor-line-no-selection {
+  color: #868686;
+}
+pre.editor-colors .fold-marker:after,
+pre.editor-colors .gutter .line-number.folded,
+pre.editor-colors .gutter .line-number:after {
+  color: #CCC;
+}
+pre.editor-colors .invisible {
+  color: white;
+}
+pre.editor-colors .cursor {
+  color: white;
+}
+pre.editor-colors .selection .region {
+  background-color: #424242;
+}
+pre.editor-colors .search-results .syntax--marker .region {
+  background-color: transparent;
+  border: 1px solid #5d5f51;
+}
+pre.editor-colors .search-results .syntax--marker.current-result .region {
+  border: 1px solid white;
+}
+.syntax--comment {
+  color: #75715E;
+}
+.syntax--string {
+  color: #E6DB74;
+}
+.syntax--source {
+  color: white;
+}
+.syntax--source.syntax--sql.syntax--embedded.syntax--php {
+  color: #E6DB74;
+}
+.syntax--constant.syntax--character,
+.syntax--constant.syntax--language,
+.syntax--constant.syntax--numeric,
+.syntax--constant.syntax--other {
+  color: #AE81FF;
+}
+.syntax--keyword {
+  color: #F92672;
+}
+.syntax--storage {
+  color: #F92672;
+}
+.syntax--storage.syntax--type {
+  font-style: italic;
+  color: #66D9EF;
+}
+pre.editor-colors[mini] .scroll-view {
+  padding-left: 1px;
+}
+pre.editor-colors .search-results .syntax--marker .region {
+  background-color: transparent;
+  border: 1px solid #5d5f51;
+}
+pre.editor-colors .search-results .syntax--marker.current-result .region {
+  border: 1px solid white;
+}
+pre.editor-colors .syntax--gfm .syntax--markup.syntax--heading {
+  color: #A6E22E;
+  font-weight: bold;
+}
+pre.editor-colors .syntax--gfm .syntax--markup.syntax--underline {
+  color: #E6DB74;
+  text-decoration: underline;
+}
+pre.editor-colors .syntax--gfm .syntax--bold {
+  font-weight: bold;
+}
+pre.editor-colors .syntax--gfm .syntax--italic {
+  font-style: italic;
+}
+pre.editor-colors .syntax--gfm .syntax--raw {
+  color: #66D9EF;
+}
+pre.editor-colors .syntax--gfm .syntax--variable.syntax--list {
+  color: #F92672;
+  font-weight: bold;
+}
+pre.editor-colors .syntax--gfm .syntax--link {
+  color: #CCC;
+}
+pre.editor-colors .syntax--gfm .syntax--link .syntax--entity {
+  color: #AE81FF;
+}
+.syntax--entity.syntax--name.syntax--class {
+  text-decoration: none;
+  color: #A6E22E;
+}
+.syntax--entity.syntax--name.syntax--function {
+  color: #A6E22E;
+}
+.syntax--method-call .syntax--entity.syntax--name.syntax--function {
+  color: #66D9EF;
+}
+.syntax--entity.syntax--name.syntax--instance {
+  color: #66D9EF;
+}
+.syntax--entity.syntax--name.syntax--tag {
+  color: #F92672;
+}
+.syntax--entity.syntax--other.syntax--attribute-name {
+  color: #A6E22E;
+}
+.syntax--entity.syntax--other.syntax--inherited-class {
+  font-style: italic;
+  text-decoration: none;
+  color: #A6E22E;
+}
+.syntax--entity.syntax--other.syntax--class.syntax--jade {
+  color: #AE81FF;
+}
+.syntax--punctuation.syntax--definition.syntax--parameters,
+.syntax--punctuation.syntax--section.syntax--embedded,
+.syntax--punctuation.syntax--section.syntax--scope,
+.syntax--punctuation.syntax--separator,
+.syntax--punctuation.syntax--terminator.syntax--expression {
+  color: white;
+}
+.syntax--invalid {
+  color: #F8F8F0;
+  background-color: #F92672;
+}
+.syntax--invalid.syntax--deprecated {
+  background-color: #AE81FF;
+}
+.syntax--invalid.syntax--illegal {
+  background-color: #cc6666;
+  color: #272822;
+}
+.syntax--support.syntax--constant,
+.syntax--support.syntax--function {
+  color: #66D9EF;
+}
+.syntax--support.syntax--class,
+.syntax--support.syntax--type {
+  font-style: italic;
+  color: #66D9EF;
+}
+.syntax--variable {
+  color: white;
+}
+.syntax--variable.syntax--language.syntax--python,
+.syntax--variable.syntax--language.syntax--js {
+  color: #F92672;
+  font-style: italic;
+}
+.syntax--meta.syntax--tag {
+  color: white;
+}
+.syntax--meta.syntax--delimiter.syntax--period {
+  color: #F92672;
+}
+.syntax--meta.syntax--function-call:not(.syntax--js) {
+  color: #66D9EF;
+}
+.syntax--meta.syntax--function .syntax--variable {
+  font-style: italic;
+  color: #FD971F;
+}
+.leading-whitespace,
+.trailing-whitespace {
+  display: inline-block;
+}
+.syntax--php .syntax--punctuation.syntax--section.syntax--embedded {
+  font-weight: bold;
+  font-style: italic;
+}
 
-    </head>
-    <body>
-        
-<div class="book">
-    <div class="book-summary">
-        
-            
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
+/*
+ * Your Stylesheet
+ *
+ * This stylesheet is loaded when Atom starts up and is reloaded automatically
+ * when it is changed and saved.
+ *
+ * Add your own CSS or Less to fully customize Atom.
+ * If you are unfamiliar with Less, you can read more about it here:
+ * http://lesscss.org
+ */
+/*
+ * Examples
+ * (To see them, uncomment and save)
+ */
+</style>
 
-            
-                <nav role="navigation">
-                
-
-
-<ul class="summary">
-    
-    
-
-    
-
-    
-        
-        
-    
-        <li class="chapter " data-level="1.1" data-path="../">
-            
-                <a href="../">
-            
-                    
-                    Home
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.2" data-path="multivariable_gaussian.html">
-            
-                <a href="multivariable_gaussian.html">
-            
-                    
-                    多変数のガウシアン
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-    
-
-    <li class="divider"></li>
-
-    <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
-        </a>
-    </li>
-</ul>
-
-
-                </nav>
-            
-        
-    </div>
-
-    <div class="book-body">
-        
-            <div class="body-inner">
-                
-                    
-
-<div class="book-header" role="navigation">
-    
-
-    <!-- Title -->
-    <h1>
-        <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >多変数のガウシアン</a>
-    </h1>
-</div>
-
-
-
-
-                    <div class="page-wrapper" tabindex="-1" role="main">
-                        <div class="page-inner">
-                            
-<div id="book-search-results">
-    <div class="search-noresults">
-    
-                                <section class="normal markdown-section">
-                                
-                                <h1 id="&#x591A;&#x6B21;&#x5143;&#x6B63;&#x898F;&#x5206;&#x5E03;">&#x591A;&#x6B21;&#x5143;&#x6B63;&#x898F;&#x5206;&#x5E03;</h1>
-<p>&#x78BA;&#x7387;&#x5909;&#x6570; <script type="math/tex; ">y_1,\dots,y_n</script> &#x304C;&#x4E92;&#x3044;&#x306B;&#x72EC;&#x7ACB;&#x306B;&#x6A19;&#x6E96;&#x6B63;&#x898F;&#x5206;&#x5E03;&#x306B;&#x5F93;&#x3046;&#x3068;&#x3059;&#x308B;.&#x3053;&#x308C;&#x3089;&#x306E;&#x5909;&#x6570;&#x306B;&#x304A;&#x3051;&#x308B;&#x540C;&#x6642;&#x78BA;&#x7387;&#x5BC6;&#x5EA6;&#x95A2;&#x6570;&#x3092;&#x8003;&#x3048;&#x308B;.
-&#x78BA;&#x7387;&#x5909;&#x6570;&#x304C;&#x4E92;&#x3044;&#x306B;&#x72EC;&#x7ACB;&#x3068;&#x3044;&#x3046;&#x3053;&#x3068;&#x304B;&#x3089;,<script type="math/tex; ">y_1,\dots,y_n</script> &#x306E;&#x540C;&#x6642;&#x78BA;&#x7387;&#x5BC6;&#x5EA6;&#x95A2;&#x6570; <script type="math/tex; ">g(y_1,\dots,y_n)</script> &#x306F;</p>
-<p><script type="math/tex; mode=display">
-\begin{align}
+  </head>
+  <body>
+    <h1>多次元正規分布</h1>
+<p>確率変数 <span class="math"><script type="math/tex">y_1,\dots,y_n</script></span> が互いに独立に標準正規分布に従うとする.これらの変数における同時確率密度関数を考える.
+確率変数が互いに独立ということから,<span class="math"><script type="math/tex">$y_1,\dots,y_n</script></span>$ の同時確率密度関数 <span class="math"><script type="math/tex">g(y_1,\dots,y_n)</script></span> は</p>
+<span class="math"><script type="math/tex; mode=display">\begin{align}
 g(y_1,\dots,y_n) & = \prod_{j=1}^n
                      \frac{1}{\sqrt{2\pi}}\exp\left(-\frac{y_j^2}{2}\right) \\
                  & = \left(\frac{1}{\sqrt{2\pi}}\right)^n
@@ -171,23 +727,19 @@ g(y_1,\dots,y_n) & = \prod_{j=1}^n
                      \exp\left(-\frac{1}{2} \boldsymbol{y}^{\top}\boldsymbol{y}\right). \\
 
 \end{align}
-</script></p>
-<p>&#x3053;&#x3053;&#x3067;</p>
-<p><script type="math/tex; mode=display">
-\boldsymbol{y} = \begin{bmatrix} y_1\\y_2\\\vdots\\y_n\\\end{bmatrix}
-</script></p>
-<p>&#x3067;&#x3042;&#x3063;&#x3066; <script type="math/tex; ">\boldsymbol{y}^{\top}</script> &#x306F;&#x8EE2;&#x7F6E;&#x3092;&#x8868;&#x3057;&#x3066;&#x3044;&#x308B;.</p>
-<p>&#x3053;&#x3053;&#x3067;,<script type="math/tex; ">T= [t_{ij}]_{i,j=1}^n</script> &#x3092;&#x6B63;&#x5247;&#x306A; <script type="math/tex; ">n</script> &#x6B21;&#x6B63;&#x65B9;&#x884C;&#x5217;&#x3068;&#x3059;&#x308B;.</p>
-<p><script type="math/tex; mode=display">
-\boldsymbol{x} = T\boldsymbol{y} + \boldsymbol{\mu}
-</script></p>
-<p>&#x306E;&#x3088;&#x3046;&#x306B;&#x30A2;&#x30D5;&#x30A3;&#x30F3;&#x5909;&#x63DB;&#x3057;&#x305F;&#x78BA;&#x7387;&#x5909;&#x6570;&#x306B;&#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x78BA;&#x7387;&#x5BC6;&#x5EA6;&#x95A2;&#x6570; <script type="math/tex; ">f=f(\boldsymbol{x})</script> &#x3092;&#x6C42;&#x3081;&#x308B;.&#x4E0A;&#x8A18;&#x5909;&#x63DB;&#x306E;&#x30E4;&#x30B3;&#x30D3;&#x30A2;&#x30F3;&#x306F;</p>
-<p><script type="math/tex; mode=display">
-\left[\frac{\partial{x_i}}{\partial y_j}\right]_{i,j=1}^n = \left[t_{ij}\right]_{i,j=1}^n = T
-</script></p>
-<p>&#x3067;&#x3042;&#x308B;. &#x3088;&#x3063;&#x3066;,&#x591A;&#x5909;&#x6570;&#x306E;&#x7A4D;&#x5206;&#x306E;&#x5909;&#x6570;&#x5909;&#x63DB;&#x3092;&#x8003;&#x3048;&#x308B;&#x3053;&#x3068;&#x3067;</p>
-<p><script type="math/tex; mode=display">
-\begin{align}
+</script></span>
+<p>ここで</p>
+<span class="math"><script type="math/tex; mode=display">\boldsymbol{y} = \begin{bmatrix} y_1\\y_2\\\vdots\\y_n\\\end{bmatrix}
+</script></span>
+<p>であって <span class="math"><script type="math/tex">\boldsymbol{y}^{\top}</script></span> は転置を表している.</p>
+<p>今, <span class="math"><script type="math/tex">T= [t_{ij}]_{i,j=1}^n</script></span> を正則な <span class="math"><script type="math/tex">n</script></span> 次正方行列とする.</p>
+<span class="math"><script type="math/tex; mode=display">\boldsymbol{x} = T\boldsymbol{y} + \boldsymbol{\mu}
+</script></span>
+<p>のようにアフィン変換した確率変数に対応する確率密度関数 <span class="math"><script type="math/tex">f=f(\boldsymbol{x})</script></span> を求める. 上記変換のヤコビアンは</p>
+<span class="math"><script type="math/tex; mode=display">\left[\frac{\partial{x_i}}{\partial y_j}\right]_{i,j=1}^n = \left[t_{ij}\right]_{i,j=1}^n = T
+</script></span>
+<p>である. よって,多変数の積分の変数変換を考えることで</p>
+<span class="math"><script type="math/tex; mode=display">\begin{align}
 \int_{\mathbb{R}} g(\boldsymbol{y})\, dy_1dy_2\cdots dy_n & = \int_{\mathbb{R}}
                                                               g(T^{-1}(\boldsymbol{x}-\boldsymbol{\mu}))
                                                               \left|\det T\right|^{-1}\, dx_1dx_2\cdots dx_n \\
@@ -203,10 +755,12 @@ g(y_1,\dots,y_n) & = \prod_{j=1}^n
                                                      (\boldsymbol{x}-\boldsymbol{\mu})
                                                  \right).
 \end{align}
-</script></p>
-<p>&#x3053;&#x3053;&#x3067; <script type="math/tex; ">\Sigma = TT^{\top}</script> &#x3068;&#x7F6E;&#x3044;&#x3066;&#x3044;&#x308B;.</p>
-<p><script type="math/tex; mode=display">
-f(\boldsymbol{x}) =
+</script></span>
+<p>ここで</p>
+<span class="math"><script type="math/tex; mode=display">\Sigma = TT^{\top}
+</script></span>
+<p>と置いている.</p>
+<span class="math"><script type="math/tex; mode=display">f(\boldsymbol{x}) =
 \frac{1}{(2\pi)^{n/2} \sqrt{\det\Sigma}}
 \exp\left(
         -\frac{1}{2}
@@ -214,22 +768,28 @@ f(\boldsymbol{x}) =
          \Sigma^{-1}
         (\boldsymbol{x}-\boldsymbol{\mu})
     \right)
-</script></p>
-<p>&#x304C;&#x6C42;&#x3081;&#x305F;&#x3044;&#x95A2;&#x6570;&#x306E;&#x5F62;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;.</p>
-<h1 id="&#x5206;&#x6563;&#x5171;&#x5206;&#x6563;&#x884C;&#x5217;&#x5171;&#x5206;&#x6563;&#x884C;&#x5217;">&#x5206;&#x6563;&#x5171;&#x5206;&#x6563;&#x884C;&#x5217;(&#x5171;&#x5206;&#x6563;&#x884C;&#x5217;)</h1>
-<p><script type="math/tex; ">\Sigma = TT^{\top}</script> &#x3068;&#x4E0E;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x305F;&#x304C;, &#x3053;&#x308C;&#x306F;&#x6B21;&#x3067;&#x4E0E;&#x3048;&#x308B;&#x5206;&#x6563;&#x5171;&#x5206;&#x6563;&#x884C;&#x5217; (&#x307E;&#x305F;&#x306F;&#x5358;&#x306B;&#x5171;&#x5206;&#x6563;&#x884C;&#x5217;) &#x3068;&#x4E00;&#x81F4;&#x3059;&#x308B;. &#x3059;&#x306A;&#x308F;&#x3061;:</p>
-<p><script type="math/tex; mode=display">
-\Sigma = \mathbb{E} \left[(\boldsymbol{x}-\mathbb{E}[\boldsymbol{x}])(\boldsymbol{x}-\mathbb{E}[\boldsymbol{x}])^{\top}\right].
-</script></p>
-<p>&#x3053;&#x3053;&#x3067; <script type="math/tex; ">\mathbb{E}[\boldsymbol{x}]</script> &#x306F;&#x8981;&#x7D20;&#x3054;&#x3068;&#x306B;&#x671F;&#x5F85;&#x5024;&#x3092;&#x3068;&#x308B;&#x30AA;&#x30DA;&#x30EC;&#x30FC;&#x30BF;, &#x3064;&#x307E;&#x308A;
-<script type="math/tex; mode=display">
-\mathbb{E}[\boldsymbol{x}] = \begin{bmatrix}
+</script></span>
+<p>が求めたい関数の形になっている.</p>
+<h1>分散共分散行列(共分散行列)</h1>
+<p>上では</p>
+<span class="math"><script type="math/tex; mode=display">\Sigma = TT^{\top}
+</script></span>
+<p>と与えられていたが, これは次で与える分散共分散行列 (または単に共分散行列) と一致する. すなわち:</p>
+<span class="math"><script type="math/tex; mode=display">\Sigma = \mathbb{E} \left[(\boldsymbol{x}-\mathbb{E}[\boldsymbol{x}])(\boldsymbol{x}-\mathbb{E}[\boldsymbol{x}])^{\top}\right].
+</script></span>
+<p>ここで</p>
+<span class="math"><script type="math/tex; mode=display">\mathbb{E}[\boldsymbol{x}]
+</script></span>
+<p>は要素ごとに期待値をとるオペレータ, つまり</p>
+<span class="math"><script type="math/tex; mode=display">\mathbb{E}[\boldsymbol{x}] = \begin{bmatrix}
                                  \mathbb{E}[x_1] \\ \mathbb{E}[x_2] \\ \vdots \\ \mathbb{E}[x_n]
                              \end{bmatrix}
-</script></p>
-<p>&#x3068;&#x5B9A;&#x3081;&#x308B;. &#x307E;&#x305F;, <script type="math/tex; ">\boldsymbol{z}=\boldsymbol{x}-\mathbb{E}[\boldsymbol{x}] </script>&#x3068;&#x304A;&#x3044;&#x305F;&#x3068;&#x304D;,</p>
-<p><script type="math/tex; mode=display">
-\begin{align}
+</script></span>
+<p>と定める. また,</p>
+<span class="math"><script type="math/tex; mode=display">\boldsymbol{z}=\boldsymbol{x}-\mathbb{E}[\boldsymbol{x}]
+</script></span>
+<p>とおいたとき,</p>
+<span class="math"><script type="math/tex; mode=display">\begin{align}
 (\boldsymbol{x}-\mathbb{E}[\boldsymbol{x}])(\boldsymbol{x}-\mathbb{E}[\boldsymbol{x}])^{\top} &=
 \boldsymbol{z} \boldsymbol{z}^{\top} \\
  &=
@@ -240,126 +800,45 @@ z_1^2   & z_1 z_2 & \dots  & z_1 z_n \\
 z_2 z_1 & z_2^2   & \dots  & z_2 z_n \\
 z_3 z_1 & z_3 z_2 & \ddots & z_3 z_n \\
 \vdots  & \vdots  &        & \vdots  \\
-z_n z_1 & z_n z_2 & \dots  & z_n^2   
+z_n z_1 & z_n z_2 & \dots  & z_n^2
 \end{bmatrix} \\
 &=\left[z_{i}z_{j}\right]_{i,j=1}^n
 \end{align}
-</script></p>
-<p>&#x3067;&#x3042;&#x308B;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3057;&#x3066;&#x884C;&#x5217;&#x306E;&#x8981;&#x7D20;&#x3054;&#x3068;&#x306B;&#x671F;&#x5F85;&#x5024;&#x3092;&#x3068;&#x308B;&#x30AA;&#x30DA;&#x30EC;&#x30FC;&#x30BF;, &#x3064;&#x307E;&#x308A;</p>
-<p><script type="math/tex; mode=display">
-\mathbb{E}[(\boldsymbol{x}-\mathbb{E}[\boldsymbol{x}])(\boldsymbol{x}-\mathbb{E}[\boldsymbol{x}])^{\top}]=\mathbb{E}[\boldsymbol{z}\boldsymbol{z}^{\top}] := \left[\mathbb{E}[z_iz_j]\right]_{i,j=1}^n
-</script></p>
-<p>&#x3067;&#x5B9A;&#x7FA9;&#x3059;&#x308B;. &#x3055;&#x3066;, <script type="math/tex; ">\boldsymbol{x}=T\boldsymbol{y}+\boldsymbol{\mu}</script> &#x3068;&#x3044;&#x3046;&#x5909;&#x63DB;&#x5247;&#x3060;&#x3063;&#x305F;&#x3053;&#x3068;&#x3092;&#x601D;&#x3044;&#x51FA;&#x3059;&#x3068;</p>
-<p><script type="math/tex; mode=display">
-\mathbb{E}[\boldsymbol{x}] =\left[\mathbb{E}\left[\sum_{j=1}^n t_{ij}y_j + \mu_i \right]\right]_{i=1}^n
-                           = \left[\sum_{j=1}^n t_{ij}\mathbb{E}\left[y_j\right] + \mu_i \right]_{i=1}^n
-</script></p>
-<p><script type="math/tex; mode=display">
-\begin{align}
+</script></span>
+<p>であることに注意して</p>
+<span class="math"><script type="math/tex; mode=display">\mathbb{E}[(\boldsymbol{x}-\mathbb{E}[\boldsymbol{x}])(\boldsymbol{x}-\mathbb{E}[\boldsymbol{x}])^{\top}]
+</script></span>
+<p>は行列の要素ごとに期待値をとるオペレータ, つまり</p>
+<span class="math"><script type="math/tex; mode=display">\mathbb{E}[(\boldsymbol{x}-\mathbb{E}[\boldsymbol{x}])(\boldsymbol{x}-\mathbb{E}[\boldsymbol{x}])^{\top}]=\mathbb{E}[\boldsymbol{z}\boldsymbol{z}^{\top}] := \left[\mathbb{E}[z_iz_j]\right]_{i,j=1}^n
+</script></span>
+<p>で定義する. さて,</p>
+<span class="math"><script type="math/tex; mode=display">\boldsymbol{x}=T\boldsymbol{y}+\boldsymbol{\mu}</script></span>
+<p>という変換則だったことを思い出すと</p>
+<span class="math"><script type="math/tex; mode=display">\begin{align}
+\mathbb{E}[\boldsymbol{x}] & =\left[\mathbb{E}\left[\sum_{j=1}^n t_{ij}y_j + \mu_i \right]\right]_{i=1}^n
+                           = \left[\sum_{j=1}^n t_{ij}\mathbb{E}\left[y_j\right] + \mu_i \right]_{i=1}^n, \\
+
 \mathbb{E}\left[{(\boldsymbol{x}-\boldsymbol{\mu})(\boldsymbol{x}-\boldsymbol{\mu})^{\top}}\right]
-=
+&=
 \left[\mathbb{E}[z_i z_j]\right]_{i,j=1}^n
 =
 \left[\mathbb{E}\left[\sum_{k,l=1}^n t_{ik}y_kt_{jl}y_l\right]\right]_{i,j=1}^n.
 \end{align}
-</script></p>
-<p>&#x3053;&#x3053;&#x3067;, <script type="math/tex; ">y_i</script> &#x304A;&#x3088;&#x3073; <script type="math/tex; ">y_j</script> &#x304C;&#x4E92;&#x3044;&#x306B;&#x72EC;&#x7ACB;&#x306A;&#x6B63;&#x898F;&#x5206;&#x5E03;&#x3067;&#x3042;&#x3063;&#x305F;&#x3053;&#x3068;&#x304B;&#x3089;</p>
-<p><script type="math/tex; mode=display">
-\begin{align}
+</script></span>
+<p>がわかる. ここで, <span class="math"><script type="math/tex">y_i</script></span> および <span class="math"><script type="math/tex">y_j</script></span> が互いに独立な正規分布であったことから</p>
+<span class="math"><script type="math/tex; mode=display">\begin{align}
 \mathbb{E}[y_iy_j]&=\mathbb{E}[y_i]\mathbb{E}[y_j] = 0 \quad \mathrm{if} \quad i\neq j\\
 \mathbb{E}[y_i^2] & = V[y_i] = 1
 \end{align}
-</script></p>
-<p>&#x306A;&#x3069;&#x306B;&#x6CE8;&#x610F;&#x3059;&#x308B;&#x3068;</p>
-<p><script type="math/tex; mode=display">
-\left[\mathbb{E}\left[\sum_{k,l=1}^n t_{ik}y_kt_{jl}y_l\right]\right]_{i,j=1}^n
+</script></span>
+<p>などに注意すると</p>
+<span class="math"><script type="math/tex; mode=display">\left[\mathbb{E}\left[\sum_{k,l=1}^n t_{ik}y_kt_{jl}y_l\right]\right]_{i,j=1}^n
 =
 \left[\sum_{k,l=1}^n t_{ik}t_{jl} \delta_{k,l} \right]_{i,j=1}^n
 =
 \left[ \sum_{k=1}^n t_{ij} t_{jk} \right]_{i,j=1}^n = T T^{\top}.
-</script></p>
-<p>&#x3088;&#x3063;&#x3066;, &#x793A;&#x3057;&#x305F;&#x3044;&#x3053;&#x3068;&#x304C;&#x793A;&#x3055;&#x308C;&#x305F;.</p>
+</script></span>
+<p>よって, 示したいことが示された.</p>
 
-                                
-                                </section>
-                            
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
-
-                        </div>
-                    </div>
-                
-            </div>
-
-            
-                
-                <a href="../" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Home">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                
-                
-            
-        
-    </div>
-
-    <script>
-        var gitbook = gitbook || [];
-        gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"多変数のガウシアン","level":"1.2","depth":1,"previous":{"title":"Home","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mathjax"],"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/multivariable_gaussian.md","mtime":"2018-10-29T15:55:11.782Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-29T15:55:38.253Z"},"basePath":"..","book":{"language":""}});
-        });
-    </script>
-</div>
-
-        
-    <script src="../gitbook/gitbook.js"></script>
-    <script src="../gitbook/theme.js"></script>
-    
-        
-        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
-        
-    
-
-    </body>
+  </body>
 </html>
-
