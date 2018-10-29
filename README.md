@@ -10,7 +10,7 @@ https://github.com/GitbookIO/plugin-mathjax
 
 ~~The equation above is written by KaTeX engine.See more detail:https://github.com/GitbookIO/plugin-katex~~
 
-I will use KaTex engine when gitbook supports `\boldsymbol`.
+I will use KaTex engine when gitbook supports decent shape of `\boldsymbol` for greek symbol.
 
 inline mode:
 
