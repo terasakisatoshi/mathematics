@@ -136,7 +136,7 @@ $$
 $$
 \begin{align}
 \mathbb{E}[y_iy_j]&=\mathbb{E}[y_i]\mathbb{E}[y_j] = 0 \quad \mathrm{if} \quad i\neq j\\
-E[y_i^2] & = V[y_i] = 1
+\mathbb{E}[y_i^2] & = V[y_i] = 1
 \end{align}
 $$
 
