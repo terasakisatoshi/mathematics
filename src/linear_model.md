@@ -305,4 +305,54 @@ E
 \end{align} \\
 $$
 
-このように変形したのちに $$E=E(\boldsymbol{w})$$ の勾配を計算することになる.
+このように変形したのちに $$E=E(\boldsymbol{w})$$ の勾配を計算することになる:
+
+$$
+\frac{\partial{E}}{\partial \boldsymbol{w}}:=
+\begin{bmatrix}
+\frac{\partial{E}}{\partial{w_0}}\\
+\frac{\partial{E}}{\partial{w_1}}\\
+\vdots \\
+\frac{\partial{E}}{\partial{w_K}}\\
+\end{bmatrix} \in \mathbb{R}^{K+1}
+$$
+
+### Lemma
+
+- ベクトル $$\boldsymbol{w}$$ に依存しない定数ベクトル $$\boldsymbol{a} \in \mathbb{R}^{K+1}$$ に対して
+
+$$
+\frac{\partial}{\partial \boldsymbol{w}} \langle \boldsymbol{a},\boldsymbol{w}\rangle
+=
+\frac{\partial}{\partial \boldsymbol{w}} \langle \boldsymbol{w},\boldsymbol{a}\rangle
+=
+\boldsymbol{a}.
+$$
+
+これは
+
+$$
+\frac{\partial}{\partial w_i} \sum_{j} a_j w_j = a_i
+$$
+
+ということから明らか.
+
+- 内積の性質:次が成り立つ:
+
+$$
+\langle \boldsymbol{a},X\boldsymbol{b} \rangle = \langle X^\top\boldsymbol{a},\boldsymbol{b} \rangle.
+$$
+
+これは次のようにして確かめられる:
+
+$$
+\begin{align}
+\langle \boldsymbol{a}, X\boldsymbol{b} \rangle
+&=
+\sum_{j}a_j \sum_{k} X_{jk}\boldsymbol{b}_k \\
+&=
+\sum_{k}\left(\sum_{j} X_{kj}^{\top} a_j\right) b_k \\
+&=
+\langle X^{\top} \boldsymbol{a},\boldsymbol{b}\rangle
+\end{align}
+$$
