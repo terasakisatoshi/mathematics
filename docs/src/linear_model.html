@@ -417,7 +417,50 @@ E
 \langle X\boldsymbol{w},X\boldsymbol{w}\rangle
 \end{align} \\
 </script></p>
-<p>&#x3053;&#x306E;&#x3088;&#x3046;&#x306B;&#x5909;&#x5F62;&#x3057;&#x305F;&#x306E;&#x3061;&#x306B; <script type="math/tex; ">E=E(\boldsymbol{w})</script> &#x306E;&#x52FE;&#x914D;&#x3092;&#x8A08;&#x7B97;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x306A;&#x308B;.</p>
+<p>&#x3053;&#x306E;&#x3088;&#x3046;&#x306B;&#x5909;&#x5F62;&#x3057;&#x305F;&#x306E;&#x3061;&#x306B; <script type="math/tex; ">E=E(\boldsymbol{w})</script> &#x306E;&#x52FE;&#x914D;&#x3092;&#x8A08;&#x7B97;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x306A;&#x308B;:</p>
+<p><script type="math/tex; mode=display">
+\frac{\partial{E}}{\partial \boldsymbol{w}}:=
+\begin{bmatrix}
+\frac{\partial{E}}{\partial{w_0}}\\
+\frac{\partial{E}}{\partial{w_1}}\\
+\vdots \\
+\frac{\partial{E}}{\partial{w_K}}\\
+\end{bmatrix} \in \mathbb{R}^{K+1}
+</script></p>
+<h3 id="lemma">Lemma</h3>
+<ul>
+<li>&#x30D9;&#x30AF;&#x30C8;&#x30EB; <script type="math/tex; ">\boldsymbol{w}</script> &#x306B;&#x4F9D;&#x5B58;&#x3057;&#x306A;&#x3044;&#x5B9A;&#x6570;&#x30D9;&#x30AF;&#x30C8;&#x30EB; <script type="math/tex; ">\boldsymbol{a} \in \mathbb{R}^{K+1}</script> &#x306B;&#x5BFE;&#x3057;&#x3066;</li>
+</ul>
+<p><script type="math/tex; mode=display">
+\frac{\partial}{\partial \boldsymbol{w}} \langle \boldsymbol{a},\boldsymbol{w}\rangle
+=
+\frac{\partial}{\partial \boldsymbol{w}} \langle \boldsymbol{w},\boldsymbol{a}\rangle
+=
+\boldsymbol{a}.
+</script></p>
+<p>&#x3053;&#x308C;&#x306F;</p>
+<p><script type="math/tex; mode=display">
+\frac{\partial}{\partial w_i} \sum_{j} a_j w_j = a_i
+</script></p>
+<p>&#x3068;&#x3044;&#x3046;&#x3053;&#x3068;&#x304B;&#x3089;&#x660E;&#x3089;&#x304B;.</p>
+<ul>
+<li>&#x5185;&#x7A4D;&#x306E;&#x6027;&#x8CEA;:&#x6B21;&#x304C;&#x6210;&#x308A;&#x7ACB;&#x3064;:</li>
+</ul>
+<p><script type="math/tex; mode=display">
+\langle \boldsymbol{a},X\boldsymbol{b} \rangle = \langle X^\top\boldsymbol{a},\boldsymbol{b} \rangle.
+</script></p>
+<p>&#x3053;&#x308C;&#x306F;&#x6B21;&#x306E;&#x3088;&#x3046;&#x306B;&#x3057;&#x3066;&#x78BA;&#x304B;&#x3081;&#x3089;&#x308C;&#x308B;:</p>
+<p><script type="math/tex; mode=display">
+\begin{align}
+\langle \boldsymbol{a}, X\boldsymbol{b} \rangle
+&=
+\sum_{j}a_j \sum_{k} X_{jk}\boldsymbol{b}_k \\
+&=
+\sum_{k}\left(\sum_{j} X_{kj}^{\top} a_j\right) b_k \\
+&=
+\langle X^{\top} \boldsymbol{a},\boldsymbol{b}\rangle
+\end{align}
+</script></p>
 
                                 
                                 </section>
@@ -457,7 +500,7 @@ E
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"線形モデル(PRML Chap3)","level":"1.3","depth":1,"previous":{"title":"多変数のガウシアン","level":"1.2","depth":1,"path":"src/multivariable_gaussian.md","ref":"src/multivariable_gaussian.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mathjax"],"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/linear_model.md","mtime":"2018-11-24T06:30:04.071Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-24T06:30:18.077Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"線形モデル(PRML Chap3)","level":"1.3","depth":1,"previous":{"title":"多変数のガウシアン","level":"1.2","depth":1,"path":"src/multivariable_gaussian.md","ref":"src/multivariable_gaussian.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mathjax"],"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/linear_model.md","mtime":"2018-11-24T06:54:46.395Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-24T06:55:58.092Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
