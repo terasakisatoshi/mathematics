@@ -143,7 +143,7 @@ $$
 
 から示したいことが示される.
 
-# データごとの積分
+# データごとに定まるモデルに関する期待値
 
 $$
 \mathbb{E}[\mathcal{L(y)}]=
@@ -152,3 +152,43 @@ $$
 $$
 
 まで分解できた.
+
+ところで, モデルの特性は(アルゴリズムを一つ固定した場合), データによって決まる. 以下データ $$\mathcal{D}$$ をパラメータとして $$y=y(\boldsymbol{x}; \mathcal{D})$$ と明示する. $$D$$ に対してモデル $$y(\cdot;\mathcal{D})$$ を求め, それの平均を $$\mathbb{E}[y(\cdot;\mathcal{D})]$$ と置く.このとき二乗誤差を次のように変形する:
+
+$$
+\begin{align}
+(y(\boldsymbol{x})-\mathbb{E}[y_t|\boldsymbol{x}])^2
+&=
+(y(\boldsymbol{x})-\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})]+\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})]-\mathbb{E}[y_t|\boldsymbol{x}])^2\\
+&=
+(y(\boldsymbol{x})-\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})])^2
++
+2(y(\boldsymbol{x})-\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})])(\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})]-\mathbb{E}[y_t|\boldsymbol{x}])
++(\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})]-\mathbb{E}[y_t|\boldsymbol{x}])^2.
+\end{align}
+$$
+
+第二項に関して $$\mathbb{E}_\mathcal{D}[\cdot]$$ を計算すると
+
+$$
+\begin{align}
+\mathbb{E}_\mathcal{D}[(y(\boldsymbol{x})-\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})])(\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})]-\mathbb{E}[y_t|\boldsymbol{x}])]
+&=
+\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})-\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})]](\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D}]-\mathbb{E}[y_t|\boldsymbol{x}])\\
+&=
+\underset{=0}{\underbrace{(\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})]-\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})])}}(\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D}]-\mathbb{E}[y_t|\boldsymbol{x}])
+=0
+\end{align}
+$$
+
+よって
+
+$$
+\mathbb{E}_\mathcal{D}[(y(\boldsymbol{x};\mathcal{D})-\mathbb{E}[y_t|\boldsymbol{x}])^2]
+=
+\mathbb{E}_\mathcal{D}[(y(\boldsymbol{x})-\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})])^2]+
+\mathbb{E}_\mathcal{D}[(\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})]-\mathbb{E}[y_t|\boldsymbol{x}])^2]
+$$
+
+となる. 第１項目を二乗バイアス、２項目
+をバリアンスという。

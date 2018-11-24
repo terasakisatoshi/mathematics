@@ -3,10 +3,10 @@
 ここでは, $$p(\theta)$$ を $$\theta$$ の事前分布, $$\mathcal{D}_N=\{\boldsymbol{x}_n\, |\, n=1,2,\dots,N\}$$ をデータの集合とする. この $$\mathcal{D}_N$$ を観測した条件下での $$\theta$$ の事後分布は $$p(\theta|\mathcal{D}_N)$$ となる.
 
 $$
-\theta_{\mathrm{MAP}} = \underset{\theta}{\mathrm{argmax}}\, p(\theta | \mathcal{D}_N)
+\hat{\theta}_{\mathrm{MAP}} = \underset{\theta}{\mathrm{argmax}}\, p(\theta | \mathcal{D}_N)
 $$
 
-を最大事後確率という.(?)
+を推定する方法を最大事後確率推定という.
 
 ベイズ(Bayes)の定理より
 

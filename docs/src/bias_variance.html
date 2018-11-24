@@ -308,13 +308,47 @@ d\boldsymbol{x}.
 \end{align}
 </script></p>
 <p>&#x304B;&#x3089;&#x793A;&#x3057;&#x305F;&#x3044;&#x3053;&#x3068;&#x304C;&#x793A;&#x3055;&#x308C;&#x308B;.</p>
-<h1 id="&#x30C7;&#x30FC;&#x30BF;&#x3054;&#x3068;&#x306E;&#x7A4D;&#x5206;">&#x30C7;&#x30FC;&#x30BF;&#x3054;&#x3068;&#x306E;&#x7A4D;&#x5206;</h1>
+<h1 id="&#x30C7;&#x30FC;&#x30BF;&#x3054;&#x3068;&#x306B;&#x5B9A;&#x307E;&#x308B;&#x30E2;&#x30C7;&#x30EB;&#x306B;&#x95A2;&#x3059;&#x308B;&#x671F;&#x5F85;&#x5024;">&#x30C7;&#x30FC;&#x30BF;&#x3054;&#x3068;&#x306B;&#x5B9A;&#x307E;&#x308B;&#x30E2;&#x30C7;&#x30EB;&#x306B;&#x95A2;&#x3059;&#x308B;&#x671F;&#x5F85;&#x5024;</h1>
 <p><script type="math/tex; mode=display">
 \mathbb{E}[\mathcal{L(y)}]=
 \int (y(\boldsymbol{x})-\mathbb{E}[y_t|\boldsymbol{x}])^2 p(\boldsymbol{x}) d\boldsymbol{x}+
 \iint (\mathbb{E}[y_t|\boldsymbol{x}]-y_t)^2 p(\boldsymbol{x},y_t)dy_td\boldsymbol{x}.
 </script></p>
 <p>&#x307E;&#x3067;&#x5206;&#x89E3;&#x3067;&#x304D;&#x305F;.</p>
+<p>&#x3068;&#x3053;&#x308D;&#x3067;, &#x30E2;&#x30C7;&#x30EB;&#x306E;&#x7279;&#x6027;&#x306F;(&#x30A2;&#x30EB;&#x30B4;&#x30EA;&#x30BA;&#x30E0;&#x3092;&#x4E00;&#x3064;&#x56FA;&#x5B9A;&#x3057;&#x305F;&#x5834;&#x5408;), &#x30C7;&#x30FC;&#x30BF;&#x306B;&#x3088;&#x3063;&#x3066;&#x6C7A;&#x307E;&#x308B;. &#x4EE5;&#x4E0B;&#x30C7;&#x30FC;&#x30BF; <script type="math/tex; ">\mathcal{D}</script> &#x3092;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3068;&#x3057;&#x3066; <script type="math/tex; ">y=y(\boldsymbol{x}; \mathcal{D})</script> &#x3068;&#x660E;&#x793A;&#x3059;&#x308B;. <script type="math/tex; ">D</script> &#x306B;&#x5BFE;&#x3057;&#x3066;&#x30E2;&#x30C7;&#x30EB; <script type="math/tex; ">y(\cdot;\mathcal{D})</script> &#x3092;&#x6C42;&#x3081;, &#x305D;&#x308C;&#x306E;&#x5E73;&#x5747;&#x3092; <script type="math/tex; ">\mathbb{E}[y(\cdot;\mathcal{D})]</script> &#x3068;&#x7F6E;&#x304F;.&#x3053;&#x306E;&#x3068;&#x304D;&#x4E8C;&#x4E57;&#x8AA4;&#x5DEE;&#x3092;&#x6B21;&#x306E;&#x3088;&#x3046;&#x306B;&#x5909;&#x5F62;&#x3059;&#x308B;:
+
+<script type="math/tex; mode=display">
+\begin{align}
+(y(\boldsymbol{x})-\mathbb{E}[y_t|\boldsymbol{x}])^2
+&=
+(y(\boldsymbol{x})-\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})]+\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})]-\mathbb{E}[y_t|\boldsymbol{x}])^2\\
+&=
+(y(\boldsymbol{x})-\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})])^2
++
+2(y(\boldsymbol{x})-\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})])(\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})]-\mathbb{E}[y_t|\boldsymbol{x}])
++(\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})]-\mathbb{E}[y_t|\boldsymbol{x}])^2.
+\end{align}
+</script></p>
+<p>&#x7B2C;&#x4E8C;&#x9805;&#x306B;&#x95A2;&#x3057;&#x3066; <script type="math/tex; ">\mathbb{E}_\mathcal{D}[\cdot]</script> &#x3092;&#x8A08;&#x7B97;&#x3059;&#x308B;&#x3068;</p>
+<p><script type="math/tex; mode=display">
+\begin{align}
+\mathbb{E}_\mathcal{D}[(y(\boldsymbol{x})-\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})])(\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})]-\mathbb{E}[y_t|\boldsymbol{x}])]
+&=
+\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})-\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})]](\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D}]-\mathbb{E}[y_t|\boldsymbol{x}])\\
+&=
+\underset{=0}{\underbrace{(\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})]-\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})])}}(\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D}]-\mathbb{E}[y_t|\boldsymbol{x}])
+=0
+\end{align}
+</script></p>
+<p>&#x3088;&#x3063;&#x3066;</p>
+<p><script type="math/tex; mode=display">
+\mathbb{E}_\mathcal{D}[(y(\boldsymbol{x};\mathcal{D})-\mathbb{E}[y_t|\boldsymbol{x}])^2]
+=
+\mathbb{E}_\mathcal{D}[(y(\boldsymbol{x})-\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})])^2]+
+\mathbb{E}_\mathcal{D}[(\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})]-\mathbb{E}[y_t|\boldsymbol{x}])^2]
+</script></p>
+<p>&#x3068;&#x306A;&#x308B;. &#x7B2C;&#xFF11;&#x9805;&#x76EE;&#x3092;&#x4E8C;&#x4E57;&#x30D0;&#x30A4;&#x30A2;&#x30B9;&#x3001;&#xFF12;&#x9805;&#x76EE;
+&#x3092;&#x30D0;&#x30EA;&#x30A2;&#x30F3;&#x30B9;&#x3068;&#x3044;&#x3046;&#x3002;</p>
 
                                 
                                 </section>
@@ -354,7 +388,7 @@ d\boldsymbol{x}.
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"バイアス・バリアンス分解","level":"1.5","depth":1,"previous":{"title":"MAP推定のお話","level":"1.4","depth":1,"path":"src/map_estimation.md","ref":"src/map_estimation.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mathjax"],"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/bias_variance.md","mtime":"2018-11-24T11:25:23.982Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-24T13:34:49.668Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"バイアス・バリアンス分解","level":"1.5","depth":1,"previous":{"title":"MAP推定のお話","level":"1.4","depth":1,"path":"src/map_estimation.md","ref":"src/map_estimation.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mathjax"],"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/bias_variance.md","mtime":"2018-11-24T15:14:31.703Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-24T15:16:30.521Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
