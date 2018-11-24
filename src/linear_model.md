@@ -356,3 +356,85 @@ $$
 \langle X^{\top} \boldsymbol{a},\boldsymbol{b}\rangle
 \end{align}
 $$
+
+- ベクトル値函数 $$\boldsymbol{f}, \boldsymbol{g}$$ に対して次が成り立つ:
+$$\frac{\partial}{\partial\boldsymbol{w}} \langle\boldsymbol{f}(\boldsymbol{w}),\boldsymbol{g}(\boldsymbol{w})\rangle
+=
+\begin{bmatrix}
+\langle \frac{\partial}{\partial w_1} \boldsymbol{f},\boldsymbol{g}\rangle \\
+\langle \frac{\partial}{\partial w_2} \boldsymbol{f},\boldsymbol{g}\rangle \\
+\vdots \\
+\langle \frac{\partial}{\partial w_K} \boldsymbol{f},\boldsymbol{g}\rangle \\
+\end{bmatrix}
++
+\begin{bmatrix}
+\langle \boldsymbol{f},\frac{\partial}{\partial w_1} \boldsymbol{g}\rangle \\
+\langle \boldsymbol{f},\frac{\partial}{\partial w_2} \boldsymbol{g}\rangle \\
+\vdots \\
+\langle \boldsymbol{f},\frac{\partial}{\partial w_K} \boldsymbol{g}\rangle \\
+\end{bmatrix}.
+$$
+
+- 特に $$\boldsymbol{f}(\boldsymbol{w})=X\boldsymbol{w}$$ の場合,
+
+$$
+\frac{\partial}{\partial{w_k}}X\boldsymbol{w}
+=
+\begin{bmatrix}
+\frac{\partial}{\partial w_{kj}} \sum_{j}X_{ij}w_j
+\end{bmatrix}_{i}
+=
+\begin{bmatrix}
+X_{ik}
+\end{bmatrix}_{i}
+$$
+
+および
+
+$$
+\left\langle \frac{\partial}{\partial w_k} X\boldsymbol{w},\boldsymbol{g}\right\rangle =
+\begin{bmatrix}
+X_{0k},X_{1k},X_{2k},\dots,X_{Nk}
+\end{bmatrix}
+\begin{bmatrix}
+g_1 \\
+g_2 \\
+\vdots \\
+g_N
+\end{bmatrix}
+$$
+
+を利用することで
+
+$$
+\frac{\partial}{\partial \boldsymbol{w}}\left\langle X\boldsymbol{w},\boldsymbol{g}\right\rangle = X^\top \boldsymbol{g}
+$$
+
+がわかる。
+
+以上の計算から
+
+$$
+\begin{align}
+\frac{\partial E}{\partial \boldsymbol{w}}
+&=
+-
+\frac{\partial E}{\partial \boldsymbol{w}}
+\langle \boldsymbol{y},X\boldsymbol{w}\rangle -
+\frac{\partial E}{\partial \boldsymbol{w}}
+\langle X\boldsymbol{w},\boldsymbol{y}\rangle +
+\frac{\partial E}{\partial \boldsymbol{w}}
+\langle X\boldsymbol{w},X\boldsymbol{w}\rangle \\
+&=
+-2X^{\top}\boldsymbol{y}
++2X^{\top}X\boldsymbol{w}.
+\end{align}
+$$
+
+この値が 0 であることを要請し $$\boldsymbol{w}$$ について解くと
+
+$$
+\boldsymbol{\hat{w}} = (X^{\top}X)^{-1} X^{\top}\boldsymbol{y}
+$$
+
+がわかる.

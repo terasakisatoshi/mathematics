@@ -461,6 +461,79 @@ E
 \langle X^{\top} \boldsymbol{a},\boldsymbol{b}\rangle
 \end{align}
 </script></p>
+<ul>
+<li><p>&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x5024;&#x51FD;&#x6570; <script type="math/tex; ">\boldsymbol{f}, \boldsymbol{g}</script> &#x306B;&#x5BFE;&#x3057;&#x3066;&#x6B21;&#x304C;&#x6210;&#x308A;&#x7ACB;&#x3064;:
+<script type="math/tex; ">\frac{\partial}{\partial\boldsymbol{w}} \langle\boldsymbol{f}(\boldsymbol{w}),\boldsymbol{g}(\boldsymbol{w})\rangle
+=
+\begin{bmatrix}
+\langle \frac{\partial}{\partial w_1} \boldsymbol{f},\boldsymbol{g}\rangle \\
+\langle \frac{\partial}{\partial w_2} \boldsymbol{f},\boldsymbol{g}\rangle \\
+\vdots \\
+\langle \frac{\partial}{\partial w_K} \boldsymbol{f},\boldsymbol{g}\rangle \\
+\end{bmatrix}
++
+\begin{bmatrix}
+\langle \boldsymbol{f},\frac{\partial}{\partial w_1} \boldsymbol{g}\rangle \\
+\langle \boldsymbol{f},\frac{\partial}{\partial w_2} \boldsymbol{g}\rangle \\
+\vdots \\
+\langle \boldsymbol{f},\frac{\partial}{\partial w_K} \boldsymbol{g}\rangle \\
+\end{bmatrix}.
+</script></p>
+</li>
+<li><p>&#x7279;&#x306B; <script type="math/tex; ">\boldsymbol{f}(\boldsymbol{w})=X\boldsymbol{w}</script> &#x306E;&#x5834;&#x5408;,</p>
+</li>
+</ul>
+<p><script type="math/tex; mode=display">
+\frac{\partial}{\partial{w_k}}X\boldsymbol{w}
+=
+\begin{bmatrix}
+\frac{\partial}{\partial w_{kj}} \sum_{j}X_{ij}w_j
+\end{bmatrix}_{i}
+=
+\begin{bmatrix}
+X_{ik}
+\end{bmatrix}_{i}
+</script></p>
+<p>&#x304A;&#x3088;&#x3073;</p>
+<p><script type="math/tex; mode=display">
+\left\langle \frac{\partial}{\partial w_k} X\boldsymbol{w},\boldsymbol{g}\right\rangle =
+\begin{bmatrix}
+X_{0k},X_{1k},X_{2k},\dots,X_{Nk}
+\end{bmatrix}
+\begin{bmatrix}
+g_1 \\
+g_2 \\
+\vdots \\
+g_N
+\end{bmatrix}
+</script></p>
+<p>&#x3092;&#x5229;&#x7528;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;</p>
+<p><script type="math/tex; mode=display">
+\frac{\partial}{\partial \boldsymbol{w}}\left\langle X\boldsymbol{w},\boldsymbol{g}\right\rangle = X^\top \boldsymbol{g}
+</script></p>
+<p>&#x304C;&#x308F;&#x304B;&#x308B;&#x3002;</p>
+<p>&#x4EE5;&#x4E0A;&#x306E;&#x8A08;&#x7B97;&#x304B;&#x3089;</p>
+<p><script type="math/tex; mode=display">
+\begin{align}
+\frac{\partial E}{\partial \boldsymbol{w}}
+&=
+-
+\frac{\partial E}{\partial \boldsymbol{w}}
+\langle \boldsymbol{y},X\boldsymbol{w}\rangle -
+\frac{\partial E}{\partial \boldsymbol{w}}
+\langle X\boldsymbol{w},\boldsymbol{y}\rangle +
+\frac{\partial E}{\partial \boldsymbol{w}}
+\langle X\boldsymbol{w},X\boldsymbol{w}\rangle \\
+&=
+-2X^{\top}\boldsymbol{y}
++2X^{\top}X\boldsymbol{w}.
+\end{align}
+</script></p>
+<p>&#x3053;&#x306E;&#x5024;&#x304C; 0 &#x3067;&#x3042;&#x308B;&#x3053;&#x3068;&#x3092;&#x8981;&#x8ACB;&#x3057; <script type="math/tex; ">\boldsymbol{w}</script> &#x306B;&#x3064;&#x3044;&#x3066;&#x89E3;&#x304F;&#x3068;</p>
+<p><script type="math/tex; mode=display">
+\boldsymbol{\hat{w}} = (X^{\top}X)^{-1} X^{\top}\boldsymbol{y}
+</script></p>
+<p>&#x304C;&#x308F;&#x304B;&#x308B;.</p>
 
                                 
                                 </section>
@@ -500,7 +573,7 @@ E
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"線形モデル(PRML Chap3)","level":"1.3","depth":1,"previous":{"title":"多変数のガウシアン","level":"1.2","depth":1,"path":"src/multivariable_gaussian.md","ref":"src/multivariable_gaussian.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mathjax"],"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/linear_model.md","mtime":"2018-11-24T06:54:46.395Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-24T06:55:58.092Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"線形モデル(PRML Chap3)","level":"1.3","depth":1,"previous":{"title":"多変数のガウシアン","level":"1.2","depth":1,"path":"src/multivariable_gaussian.md","ref":"src/multivariable_gaussian.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mathjax"],"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/linear_model.md","mtime":"2018-11-24T07:28:58.867Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-24T07:29:15.095Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
