@@ -2,4 +2,4 @@
 * [多変数のガウシアン](src/multivariable_gaussian.md)
 * [線形モデル(PRML Chap3)](src/linear_model.md)
 * [MAP推定のお話](src/map_estimation.md)
-* [バイアス・バリアンス分解](src/bias_variance)
+* [バイアス・バリアンス分解](src/bias_variance.md)

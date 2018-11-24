@@ -1,0 +1,301 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>バイアス・バリアンス分解 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="map_estimation.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Home
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="multivariable_gaussian.html">
+            
+                <a href="multivariable_gaussian.html">
+            
+                    
+                    多変数のガウシアン
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="linear_model.html">
+            
+                <a href="linear_model.html">
+            
+                    
+                    線形モデル(PRML Chap3)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="map_estimation.html">
+            
+                <a href="map_estimation.html">
+            
+                    
+                    MAP推定のお話
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5" data-path="bias_variance.html">
+            
+                <a href="bias_variance.html">
+            
+                    
+                    バイアス・バリアンス分解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >バイアス・バリアンス分解</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x30D0;&#x30A4;&#x30A2;&#x30B9;&#x30FB;&#x30D0;&#x30EA;&#x30A2;&#x30F3;&#x30B9;&#x5206;&#x89E3;">&#x30D0;&#x30A4;&#x30A2;&#x30B9;&#x30FB;&#x30D0;&#x30EA;&#x30A2;&#x30F3;&#x30B9;&#x5206;&#x89E3;</h1>
+<p>&#x89B3;&#x6E2C;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x96C6;&#x5408; <script type="math/tex; ">\mathcal{D}_N=\{(\boldsymbol{x}_n,y_n)\, |\, n=1,2,\dots,N\}</script> &#x304B;&#x3089;&#x5B66;&#x7FD2;&#x3055;&#x308C;&#x305F;&#x30E2;&#x30C7;&#x30EB;&#x306B;&#x304A;&#x3044;&#x3066;, &#x65B0;&#x3057;&#x3044;&#x30C7;&#x30FC;&#x30BF; <script type="math/tex; ">\boldsymbol{x}</script> &#x306B;&#x5BFE;&#x3057;&#x3066; <script type="math/tex; ">y</script> &#x306E;&#x4E88;&#x6E2C;&#x3059;&#x308B;&#x4E88;&#x6E2C;&#x5024;
+<script type="math/tex; ">y(\boldsymbol{x})</script> &#x306E;&#x771F;&#x306E;&#x5024; <script type="math/tex; ">y_t</script> &#x306E;&#x30BA;&#x30EC;&#x3092;&#x640D;&#x5931;&#x3068;&#x3044;&#x3046;. &#x3053;&#x3053;&#x3067;&#x306F;&#x30BA;&#x30EC;&#x306E;&#x6307;&#x6A19;&#x3068;&#x3057;&#x3066;&#x4E8C;&#x4E57;&#x8AA4;&#x5DEE; <script type="math/tex; ">\mathcal{L}(y(\boldsymbol{x}))=(y(\boldsymbol{x})-y_t)^2</script> &#x306B;&#x3064;&#x3044;&#x3066;&#x8003;&#x3048;&#x308B;. &#x3053;&#x308C;&#x306F; <script type="math/tex; ">y</script> &#x306B;&#x3064;&#x3044;&#x3066;&#x306E;&#x6C4E;&#x95A2;&#x6570;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;. <script type="math/tex; ">p(\boldsymbol{x},y_t)</script> &#x3092; <script type="math/tex; ">\boldsymbol{x}</script> &#x3068; <script type="math/tex; ">y_t</script> &#x306E;&#x540C;&#x6642;&#x5206;&#x5E03;&#x3068;&#x304A;&#x304F;. &#x640D;&#x5931;&#x51FD;&#x6570;&#x306E;&#x671F;&#x5F85;&#x5024;&#x306F;&#x6B21;&#x3067;&#x4E0E;&#x3048;&#x3089;&#x308C;&#x308B;.</p>
+<p><script type="math/tex; mode=display">
+\mathbb{E}[\mathcal{L}(y)]=\iint (y(\boldsymbol{x})-y_t)^2p(\boldsymbol{x},y)\, dy_td\boldsymbol{x}
+</script></p>
+<p>&#x5B9A;&#x7FA9;&#x306B;&#x3088;&#x308A;&#x69D8;&#x3005;&#x306A; <script type="math/tex; ">\boldsymbol{x}</script> &#x3092;&#x89B3;&#x6E2C;&#x3057;&#x305F;&#x969B;&#x306E; <script type="math/tex; ">y(\boldsymbol{x})</script> &#x3068; <script type="math/tex; ">y_t</script> &#x306E;&#x30BA;&#x30EC;&#x306E;&#x5E73;&#x5747;&#x3092;&#x8868;&#x3057;&#x3066;&#x3044;&#x308B;.</p>
+<p>&#x3053;&#x306E;&#x30BA;&#x30EC;&#x3092;&#x6700;&#x5C0F;&#x306B;&#x3059;&#x308B; <script type="math/tex; ">y=y(\boldsymbol{x})</script> &#x306F;&#x6B21;&#x306E;&#x3088;&#x3046;&#x306B;&#x66F8;&#x3051;&#x308B;:</p>
+<p><script type="math/tex; mode=display">
+\underset{y}{\mathrm{argmax}}\, \mathbb{E}[\mathcal{L}(y)] = \mathbb{E}[y_t|\boldsymbol{x}] = \int y_t p(y_t|\boldsymbol{x})dy_t
+</script></p>
+<p>&#x8A3C;&#x660E;</p>
+<p>&#x3044;&#x307E;, <script type="math/tex; ">y: \boldsymbol{x} \mapsto y(\boldsymbol{x})</script> &#x304C; <script type="math/tex; ">E[\mathcal{L}(y)]</script> &#x3092;&#x6700;&#x5C0F;&#x306B;&#x3059;&#x308B;&#x3082;&#x306E;&#x3068;&#x3059;&#x308B;. &#x3053;&#x306E; <script type="math/tex; ">y</script> &#x306B;&#x826F;&#x3044;&#x6761;&#x4EF6;&#x3092;&#x6301;&#x3064; (e.g. &#x5341;&#x5206;&#x6ED1;&#x3089;&#x304B;&#x306A;) &#x30C6;&#x30B9;&#x30C8;&#x51FD;&#x6570; <script type="math/tex; ">\eta</script> &#x3092;&#x308F;&#x305A;&#x304B;&#x306B;&#x4ED8;&#x4E0E;, &#x3059;&#x306A;&#x308F;&#x3061;&#x5341;&#x5206;&#x306B;&#x5C0F;&#x3055;&#x3044; <script type="math/tex; ">\varepsilon</script> &#x3092;&#x7528;&#x3044;&#x3066; <script type="math/tex; ">y+\varepsilon\eta</script>, &#x306A;&#x308B;&#x3082;&#x306E;&#x3092;&#x8003;&#x3048;&#x308B;. &#x3053;&#x306E;&#x3068;&#x304D;</p>
+<p><script type="math/tex; mode=display">
+\lim_{\varepsilon\to 0} \frac{\mathbb{E}[\mathcal{L}(y+\varepsilon\eta)]-\mathbb{E}[\mathcal{L}(y)]}{\varepsilon} = 0
+</script></p>
+<p>&#x3092;&#x8981;&#x8ACB;&#x3059;&#x308B; (&#x5E73;&#x305F;&#x304F;&#x3044;&#x3046;&#x3068;&#x6C4E;&#x95A2;&#x6570; <script type="math/tex; ">\mathbb{E}[\mathcal{L}(\cdot)]</script> &#x306E;&#x6975;&#x5024;).</p>
+<p><img src="images/variational_method.png" alt="imageisimage"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="map_estimation.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: MAP推定のお話">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"バイアス・バリアンス分解","level":"1.5","depth":1,"previous":{"title":"MAP推定のお話","level":"1.4","depth":1,"path":"src/map_estimation.md","ref":"src/map_estimation.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mathjax"],"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/bias_variance.md","mtime":"2018-11-24T10:11:13.289Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-24T10:13:17.146Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

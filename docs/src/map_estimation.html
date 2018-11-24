@@ -1,0 +1,317 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>MAP推定のお話 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="bias_variance.html" />
+    
+    
+    <link rel="prev" href="linear_model.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Home
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="multivariable_gaussian.html">
+            
+                <a href="multivariable_gaussian.html">
+            
+                    
+                    多変数のガウシアン
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="linear_model.html">
+            
+                <a href="linear_model.html">
+            
+                    
+                    線形モデル(PRML Chap3)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4" data-path="map_estimation.html">
+            
+                <a href="map_estimation.html">
+            
+                    
+                    MAP推定のお話
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="bias_variance.html">
+            
+                <a href="bias_variance.html">
+            
+                    
+                    バイアス・バリアンス分解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >MAP推定のお話</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="map-&#x63A8;&#x5B9A;">MAP &#x63A8;&#x5B9A;</h1>
+<p>&#x3053;&#x3053;&#x3067;&#x306F;, <script type="math/tex; ">p(\theta)</script> &#x3092; <script type="math/tex; ">\theta</script> &#x306E;&#x4E8B;&#x524D;&#x5206;&#x5E03;, <script type="math/tex; ">\mathcal{D}_N=\{\boldsymbol{x}_n\, |\, n=1,2,\dots,N\}</script> &#x3092;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x96C6;&#x5408;&#x3068;&#x3059;&#x308B;. &#x3053;&#x306E; <script type="math/tex; ">\mathcal{D}_N</script> &#x3092;&#x89B3;&#x6E2C;&#x3057;&#x305F;&#x6761;&#x4EF6;&#x4E0B;&#x3067;&#x306E; <script type="math/tex; ">\theta</script> &#x306E;&#x4E8B;&#x5F8C;&#x5206;&#x5E03;&#x306F; <script type="math/tex; ">p(\theta|\mathcal{D}_N)</script> &#x3068;&#x306A;&#x308B;.</p>
+<p><script type="math/tex; mode=display">
+\theta_{\mathrm{MAP}} = \underset{\theta}{\mathrm{argmax}}\, p(\theta | \mathcal{D}_N)
+</script></p>
+<p>&#x3092;&#x6700;&#x5927;&#x4E8B;&#x5F8C;&#x78BA;&#x7387;&#x3068;&#x3044;&#x3046;.(?)</p>
+<p>&#x30D9;&#x30A4;&#x30BA;(Bayes)&#x306E;&#x5B9A;&#x7406;&#x3088;&#x308A;</p>
+<p><script type="math/tex; mode=display">
+\hat{\theta}_{\mathrm{MAP}} = \underset{\theta}{\mathrm{argmax}}\, p(\theta | \mathcal{D}_N) = \underset{\theta}{\mathrm{argmax}}\, \frac{p(D|\theta)p(\theta)}{p(\mathcal{D})}
+=\underset{\theta}{\mathrm{argmax}}\, p(\mathcal{D}|\theta)p(\theta)
+</script></p>
+<p>&#x5BFE;&#x6570;&#x51FD;&#x6570;&#x306F;&#x5358;&#x8ABF;&#x5897;&#x52A0;&#x306A;&#x306E;&#x3067;</p>
+<p><script type="math/tex; mode=display">
+\begin{align}
+\theta_{\mathrm{MAP}}
+&=
+\underset{\theta}{\mathrm{argmax}}\, p(\theta|\mathcal{D}_N) \\
+&=
+\underset{\theta}{\mathrm{argmax}}\,
+p(\mathcal{D}_N|\theta)p(\theta) \\
+&=
+\underset{\theta}{\mathrm{argmax}}\,
+(\log p(\mathcal{D}_N|\theta)+\log p(\theta)) \\
+&=
+\underset{\theta}{\mathrm{argmax}}\,
+\left(\sum_{n=1}^N \log p(x_n|\theta)+\log p(\theta)\right)
+\end{align}
+</script></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="linear_model.html" class="navigation navigation-prev " aria-label="Previous page: 線形モデル(PRML Chap3)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="bias_variance.html" class="navigation navigation-next " aria-label="Next page: バイアス・バリアンス分解">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"MAP推定のお話","level":"1.4","depth":1,"next":{"title":"バイアス・バリアンス分解","level":"1.5","depth":1,"path":"src/bias_variance.md","ref":"src/bias_variance.md","articles":[]},"previous":{"title":"線形モデル(PRML Chap3)","level":"1.3","depth":1,"path":"src/linear_model.md","ref":"src/linear_model.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mathjax"],"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/map_estimation.md","mtime":"2018-11-24T09:28:35.847Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-24T10:13:17.146Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
