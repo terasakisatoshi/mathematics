@@ -92,7 +92,7 @@ $$
 
 のように記述できるモデル（枠組み）で議論をする. このモデルを線形モデルと呼び, このモデルによる推定を線形回帰と呼ぶ.これは　$$\boldsymbol{x}$$ 側の値を固定した時に $$f$$ は $$\boldsymbol{w}$$ に関して線形だからである.
 
-# 基底関数
+# 基底関数を用いた線形モデル
 
 入力変数 $$\boldsymbol{x}\in \mathbb{R}^{K+1}$$ は関数として一次独立な関数 $$\phi_0,\phi_1,\dots,\phi_K$$ が与えられたとき,
 
@@ -135,6 +135,8 @@ $$
 
 となる. この場合, 線形回帰モデルは $$f$$ を $$w_0, w_1,\dots, w_K$$ を係数とする $$x$$ の多項式にで近似する問題になる.
 
+このように多項式近似の問題を線形モデルの回帰問題として扱うことができる.
+
 他にも互いに異なる $$\mu_k$$ に対して定まるガウス分布と同じ形をするガウス基底関数
 
 $$
@@ -147,3 +149,74 @@ $$
 $$
 
 などもある（らしい）.
+
+# 尤度最大化による重みパラメータの推定
+
+ここでは, $$N$$ のデータからなるデータ集合
+
+$$
+\mathcal{D}_N = \{(\boldsymbol{x}_n,y_n)\, | \, \boldsymbol{x}_n \in \mathbb{R}^{K+1}, y_n \in\mathbb{R}, n \in \{1,2,\dots,N\} \}
+$$
+
+から線形モデルのパラメータである重みベクトル $$\boldsymbol{w}$$ を推定していく. データ $$(\boldsymbol{x},y)$$ には $$y=f(x)=\langle \boldsymbol{w},\boldsymbol{x}\rangle$$ という関係を持っているとした現実問題として観測データに当たる目標変数にはノイズ・雑音 $$\varepsilon$$ が混ざっていることが多い.
+
+$$
+y=\langle \boldsymbol{w},\boldsymbol{x} \rangle + \varepsilon
+$$
+
+このとき $$\varepsilon$$ が導入されることで一見複雑に見えてしまう.しかしこれを逆手に取り, データ集合 $$\mathcal{D}_N$$ に対する尤度を計算することで最尤推定法によって重みベクトル $$\boldsymbol{w}$$ をすることができる. ノイズ $$\varepsilon$$ がある種の確率分布にしたがった値をとるものと仮定する.　これは言い換えるとデータの真の観測値（理想的な観測値）と線形モデルの差がその確率分布に従うということになる. 以下, ノイズが (データとは独立に) 平均 $$\mu=0$$, 分散が $$\sigma^2$$ の正規分布 $$\mathcal{N}(\mu,\sigma^2)$$ に従うとしよう.　これを $$\mathcal{N}(\mu,\sigma^2) \sim \varepsilon$$ と書くことにすれば.
+
+$$
+y-\langle \boldsymbol{w}, \boldsymbol{x} \rangle \sim \mathcal{N}(\mu,\sigma^2),\quad \mu=0
+$$
+
+と見做すことが出来る. 上述の正規分布 $$\mathcal{N}(\mu,\sigma^2)$$ に対応する確率密度関数
+
+$$
+p(x;\mu,\sigma) = \frac{1}{\sqrt{2\pi\sigma^2}}
+\exp\left(-\frac{1}{2\sigma^2}(x-\mu)^2\right)
+$$
+
+を用いて $$\mathcal{D}_N$$ の尤度(likehood) $$L$$ を計算すると
+
+$$
+\begin{align}
+L
+&= \prod_{n=1}^N p(y_n-\langle \boldsymbol{w}, \boldsymbol{x}\rangle; \mu, \sigma^2) \\
+&=
+\left(\frac{1}{2\pi\sigma^2}\right)^{N/2} \exp\left(-\frac{1}{2\sigma^2}\sum_{n=1}^N (y_n-\langle \boldsymbol{w}, \boldsymbol{x} \rangle)^2\right)
+\end{align}
+$$
+
+となる. これを $$\boldsymbol{w}$$ の函数 $$L=L(\boldsymbol{w})$$ とみなし尤度を最大にする $$\boldsymbol{\hat{w}}$$ を計算する（最尤推定法）:
+
+$$
+\begin{align}
+\boldsymbol{\hat{w}}
+&=
+\underset{\boldsymbol{\hat{w}}}{\mathrm{argmax}}\, L \\
+&=
+\underset{\boldsymbol{\hat{w}}}{\mathrm{argmax}}\, \log L \\
+&=
+\underset{\boldsymbol{\hat{w}}}{\mathrm{argmax}}\, \sum_{n=1}^N (y_n - \langle \boldsymbol{w},\boldsymbol{x}_n\rangle)^2
+\end{align}
+$$
+
+ここで対数函数が単調増加であることを利用して $$L$$ の対数尤度の計算に帰着している:
+
+$$
+\log L = -\frac{N}{2}\log (2\pi\sigma^2) - \frac{1}{2\sigma^2} \sum_{n=1}^N (y_n - \langle
+\boldsymbol{w},\boldsymbol{x}_n
+\rangle)^2.
+$$
+
+
+## ここまででわかったこと
+
+正規分布の雑音を持つ線形モデルの最尤推定による線形回帰の計算は下記の損失函数を
+
+$$
+\sum_{n=1}^N (y_n - \langle \boldsymbol{x}_n,\boldsymbol{w}\rangle)^2
+$$
+
+最小にする $$\boldsymbol{w}$$ を求めることに帰着される.
