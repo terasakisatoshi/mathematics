@@ -438,3 +438,26 @@ $$
 $$
 
 がわかる.
+
+# ノイズの分散の推定
+
+
+対数尤度
+
+$$
+\log L = -\frac{N}{2}\log (2\pi\sigma^2) - \frac{1}{2\sigma^2} \sum_{n=1}^N (y_n - \langle
+\boldsymbol{w},\boldsymbol{x}_n
+\rangle)^2
+$$
+
+を $$\boldsymbol{w}$$ の函数として尤度の最大化を図った. 尤度には二乗誤差の式とは独立にノイズの標準偏差を表す $$\sigma$$ がある $$\lambda = 1/\sigma^2$$ とおくと
+
+$$
+\frac{\partial}{\partial\lambda}\log L = \frac{N}{2\lambda} -\frac{1}{2}\sum_{n=1}^N (y_n - \langle\boldsymbol{w},\boldsymbol{x}_n\rangle)^2.
+$$
+
+この値が 0 であることを要請して $$\lambda^{-1}$$ について解くと,
+
+$$
+\sigma^2 = \lambda^{-1} = \frac{1}{N} \sum_{n=1}^N(y_n-\langle \boldsymbol{w},\boldsymbol{x}_n\rangle)^2
+$$

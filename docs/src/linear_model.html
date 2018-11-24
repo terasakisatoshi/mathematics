@@ -534,6 +534,21 @@ g_N
 \boldsymbol{\hat{w}} = (X^{\top}X)^{-1} X^{\top}\boldsymbol{y}
 </script></p>
 <p>&#x304C;&#x308F;&#x304B;&#x308B;.</p>
+<h1 id="&#x30CE;&#x30A4;&#x30BA;&#x306E;&#x5206;&#x6563;&#x306E;&#x63A8;&#x5B9A;">&#x30CE;&#x30A4;&#x30BA;&#x306E;&#x5206;&#x6563;&#x306E;&#x63A8;&#x5B9A;</h1>
+<p>&#x5BFE;&#x6570;&#x5C24;&#x5EA6;</p>
+<p><script type="math/tex; mode=display">
+\log L = -\frac{N}{2}\log (2\pi\sigma^2) - \frac{1}{2\sigma^2} \sum_{n=1}^N (y_n - \langle
+\boldsymbol{w},\boldsymbol{x}_n
+\rangle)^2
+</script></p>
+<p>&#x3092; <script type="math/tex; ">\boldsymbol{w}</script> &#x306E;&#x51FD;&#x6570;&#x3068;&#x3057;&#x3066;&#x5C24;&#x5EA6;&#x306E;&#x6700;&#x5927;&#x5316;&#x3092;&#x56F3;&#x3063;&#x305F;. &#x5C24;&#x5EA6;&#x306B;&#x306F;&#x4E8C;&#x4E57;&#x8AA4;&#x5DEE;&#x306E;&#x5F0F;&#x3068;&#x306F;&#x72EC;&#x7ACB;&#x306B;&#x30CE;&#x30A4;&#x30BA;&#x306E;&#x6A19;&#x6E96;&#x504F;&#x5DEE;&#x3092;&#x8868;&#x3059; <script type="math/tex; ">\sigma</script> &#x304C;&#x3042;&#x308B; <script type="math/tex; ">\lambda = 1/\sigma^2</script> &#x3068;&#x304A;&#x304F;&#x3068;</p>
+<p><script type="math/tex; mode=display">
+\frac{\partial}{\partial\lambda}\log L = \frac{N}{2\lambda} -\frac{1}{2}\sum_{n=1}^N (y_n - \langle\boldsymbol{w},\boldsymbol{x}_n\rangle)^2.
+</script></p>
+<p>&#x3053;&#x306E;&#x5024;&#x304C; 0 &#x3067;&#x3042;&#x308B;&#x3053;&#x3068;&#x3092;&#x8981;&#x8ACB;&#x3057;&#x3066; <script type="math/tex; ">\lambda^{-1}</script> &#x306B;&#x3064;&#x3044;&#x3066;&#x89E3;&#x304F;&#x3068;,</p>
+<p><script type="math/tex; mode=display">
+\sigma^2 = \lambda^{-1} = \frac{1}{N} \sum_{n=1}^N(y_n-\langle \boldsymbol{w},\boldsymbol{x}_n\rangle)^2
+</script></p>
 
                                 
                                 </section>
@@ -573,7 +588,7 @@ g_N
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"線形モデル(PRML Chap3)","level":"1.3","depth":1,"previous":{"title":"多変数のガウシアン","level":"1.2","depth":1,"path":"src/multivariable_gaussian.md","ref":"src/multivariable_gaussian.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mathjax"],"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/linear_model.md","mtime":"2018-11-24T07:28:58.867Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-24T07:29:15.095Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"線形モデル(PRML Chap3)","level":"1.3","depth":1,"previous":{"title":"多変数のガウシアン","level":"1.2","depth":1,"path":"src/multivariable_gaussian.md","ref":"src/multivariable_gaussian.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mathjax"],"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/linear_model.md","mtime":"2018-11-24T07:40:50.543Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-24T07:41:15.969Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
