@@ -213,10 +213,96 @@ $$
 
 ## ここまででわかったこと
 
-正規分布の雑音を持つ線形モデルの最尤推定による線形回帰の計算は下記の損失函数を
+正規分布の雑音を持つと仮定した線形モデルにおいて最尤推定法による線形回帰の計算は下記の損失函数を
 
 $$
-\sum_{n=1}^N (y_n - \langle \boldsymbol{x}_n,\boldsymbol{w}\rangle)^2
+E=E(\boldsymbol{w})=\sum_{n=1}^N (y_n - \langle \boldsymbol{x}_n,\boldsymbol{w}\rangle)^2
 $$
 
-最小にする $$\boldsymbol{w}$$ を求めることに帰着される.
+最小にする $$\boldsymbol{w}=\boldsymbol{\hat{w}}$$ を求めることに帰着される:
+
+$$
+\begin{align}
+\boldsymbol{\hat{w}}
+:&=
+\underset{\boldsymbol{w}}{\mathrm{argmax}}\, L \\
+&=
+\underset{\boldsymbol{w}}{\mathrm{argmin}}\, E. \\
+\end{align}
+$$
+
+# ここから示していくこと
+
+$$
+\begin{align}
+\boldsymbol{\hat{w}}
+:&=
+\underset{\boldsymbol{w}}{\mathrm{argmax}}\, L \\
+&=
+\underset{\boldsymbol{w}}{\mathrm{argmin}}\, E. \\
+&=
+(X^\top X)^{-1}X^{\top}\boldsymbol{y}
+\end{align}
+$$
+
+ここで $$X$$ は次で与えられる $$N$$ 行 $$(K+1)$$ 列の行列である:
+
+$$
+\begin{align}
+X
+&=
+\begin{bmatrix}
+\boldsymbol{x_1^\top}\\
+\boldsymbol{x_2^\top}\\
+\vdots
+\\
+\boldsymbol{x_N^\top}
+\end{bmatrix}
+\\
+&=
+\begin{bmatrix}
+x_{10} &x_{11}& \cdots &x_{1K}\\
+x_{20} &x_{21}& \cdots &x_{2K}\\
+\vdots & \vdots &      &\vdots\\
+x_{N0} &x_{N1}& \cdots &x_{NK}\\
+\end{bmatrix}.
+\end{align}
+$$
+また,
+$$
+\boldsymbol{x}_n =
+\begin{bmatrix}
+x_{n0}\\
+x_{n1}\\
+\vdots \\
+x_{nK}\\
+\end{bmatrix}, \quad
+\boldsymbol{y}=
+\begin{bmatrix}
+y_1\\
+y_2 \\
+\vdots \\
+y_N
+\end{bmatrix}.
+$$
+
+## 計算の方針
+
+まず, $$E$$ が内積を用いて次のように変形できることに注意しよう:
+
+$$
+\begin{align}
+E
+&=
+\sum_{n=1}^N (y_n-\langle \boldsymbol{w},\boldsymbol{x}\rangle)^2 \\
+&=
+\langle y - X\boldsymbol{w}, y-X\boldsymbol{w}\rangle \\
+&=
+\langle \boldsymbol{y},\boldsymbol{y}\rangle -
+\langle \boldsymbol{y},X\boldsymbol{w}\rangle -
+\langle X\boldsymbol{w},\boldsymbol{y}\rangle +
+\langle X\boldsymbol{w},X\boldsymbol{w}\rangle
+\end{align} \\
+$$
+
+このように変形したのちに $$E=E(\boldsymbol{w})$$ の勾配を計算することになる.
