@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>MAP推定のお話 · GitBook</title>
+        <title>エビデンス函数の最大化 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="bias_variance.html" />
     
-    
-    <link rel="prev" href="../regular_term.md" />
+    <link rel="prev" href="bias_variance.html" />
     
 
     </head>
@@ -154,7 +152,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6" data-path="map_estimation.html">
+        <li class="chapter " data-level="1.6" data-path="map_estimation.html">
             
                 <a href="map_estimation.html">
             
@@ -180,7 +178,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="evidence.html">
+        <li class="chapter active" data-level="1.8" data-path="evidence.html">
             
                 <a href="evidence.html">
             
@@ -223,7 +221,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >MAP推定のお話</a>
+        <a href=".." >エビデンス函数の最大化</a>
     </h1>
 </div>
 
@@ -238,34 +236,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="map-&#x63A8;&#x5B9A;">MAP &#x63A8;&#x5B9A;</h1>
-<p>&#x3053;&#x3053;&#x3067;&#x306F;, <script type="math/tex; ">p(\theta)</script> &#x3092; <script type="math/tex; ">\theta</script> &#x306E;&#x4E8B;&#x524D;&#x5206;&#x5E03;, <script type="math/tex; ">\mathcal{D}_N=\{\boldsymbol{x}_n\, |\, n=1,2,\dots,N\}</script> &#x3092;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x96C6;&#x5408;&#x3068;&#x3059;&#x308B;. &#x3053;&#x306E; <script type="math/tex; ">\mathcal{D}_N</script> &#x3092;&#x89B3;&#x6E2C;&#x3057;&#x305F;&#x6761;&#x4EF6;&#x4E0B;&#x3067;&#x306E; <script type="math/tex; ">\theta</script> &#x306E;&#x4E8B;&#x5F8C;&#x5206;&#x5E03;&#x306F; <script type="math/tex; ">p(\theta|\mathcal{D}_N)</script> &#x3068;&#x306A;&#x308B;.</p>
-<p><script type="math/tex; mode=display">
-\hat{\theta}_{\mathrm{MAP}} = \underset{\theta}{\mathrm{argmax}}\, p(\theta | \mathcal{D}_N)
-</script></p>
-<p>&#x3092;&#x63A8;&#x5B9A;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#x3092;&#x6700;&#x5927;&#x4E8B;&#x5F8C;&#x78BA;&#x7387;&#x63A8;&#x5B9A;&#x3068;&#x3044;&#x3046;.</p>
-<p>&#x30D9;&#x30A4;&#x30BA;(Bayes)&#x306E;&#x5B9A;&#x7406;&#x3088;&#x308A;</p>
-<p><script type="math/tex; mode=display">
-\hat{\theta}_{\mathrm{MAP}} = \underset{\theta}{\mathrm{argmax}}\, p(\theta | \mathcal{D}_N) = \underset{\theta}{\mathrm{argmax}}\, \frac{p(D|\theta)p(\theta)}{p(\mathcal{D})}
-=\underset{\theta}{\mathrm{argmax}}\, p(\mathcal{D}|\theta)p(\theta)
-</script></p>
-<p>&#x5BFE;&#x6570;&#x51FD;&#x6570;&#x306F;&#x5358;&#x8ABF;&#x5897;&#x52A0;&#x306A;&#x306E;&#x3067;</p>
-<p><script type="math/tex; mode=display">
-\begin{align}
-\theta_{\mathrm{MAP}}
-&=
-\underset{\theta}{\mathrm{argmax}}\, p(\theta|\mathcal{D}_N) \\
-&=
-\underset{\theta}{\mathrm{argmax}}\,
-p(\mathcal{D}_N|\theta)p(\theta) \\
-&=
-\underset{\theta}{\mathrm{argmax}}\,
-(\log p(\mathcal{D}_N|\theta)+\log p(\theta)) \\
-&=
-\underset{\theta}{\mathrm{argmax}}\,
-\left(\sum_{n=1}^N \log p(x_n|\theta)+\log p(\theta)\right)
-\end{align}
-</script></p>
+                                <p><a href="https://qiita.com/amber_kshz/items/35bf3ef761e4d3b248b3" target="_blank">This article is helpful</a></p>
 
                                 
                                 </section>
@@ -293,14 +264,10 @@ p(\mathcal{D}_N|\theta)p(\theta) \\
 
             
                 
-                <a href="../regular_term.md" class="navigation navigation-prev " aria-label="Previous page: 正則化項のお気持ち">
+                <a href="bias_variance.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: バイアス・バリアンス分解">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="bias_variance.html" class="navigation navigation-next " aria-label="Next page: バイアス・バリアンス分解">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -309,7 +276,7 @@ p(\mathcal{D}_N|\theta)p(\theta) \\
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"MAP推定のお話","level":"1.6","depth":1,"next":{"title":"バイアス・バリアンス分解","level":"1.7","depth":1,"path":"src/bias_variance.md","ref":"src/bias_variance.md","articles":[]},"previous":{"title":"正則化項のお気持ち","level":"1.5","depth":1,"path":"regular_term.md","ref":"regular_term.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mathjax"],"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/map_estimation.md","mtime":"2018-11-24T14:30:05.877Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-25T11:02:24.068Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"エビデンス函数の最大化","level":"1.8","depth":1,"previous":{"title":"バイアス・バリアンス分解","level":"1.7","depth":1,"path":"src/bias_variance.md","ref":"src/bias_variance.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mathjax"],"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/evidence.md","mtime":"2018-11-24T15:25:04.550Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-25T11:02:24.068Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
