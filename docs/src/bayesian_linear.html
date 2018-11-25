@@ -1,0 +1,482 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>ベイス推定から見た線形モデル · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="evidence.html" />
+    
+    
+    <link rel="prev" href="bias_variance.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Home
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="multivariable_gaussian.html">
+            
+                <a href="multivariable_gaussian.html">
+            
+                    
+                    多変数のガウシアン
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="linear_model.html">
+            
+                <a href="linear_model.html">
+            
+                    
+                    線形モデル(PRML Chap3)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="lagrange_multiplier.html">
+            
+                <a href="lagrange_multiplier.html">
+            
+                    
+                    ラグランジュ未定係数法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="regular_term.html">
+            
+                <a href="regular_term.html">
+            
+                    
+                    正則化項のお気持ち
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="map_estimation.html">
+            
+                <a href="map_estimation.html">
+            
+                    
+                    MAP推定のお話
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="bias_variance.html">
+            
+                <a href="bias_variance.html">
+            
+                    
+                    バイアス・バリアンス分解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.8" data-path="bayesian_linear.html">
+            
+                <a href="bayesian_linear.html">
+            
+                    
+                    ベイス推定から見た線形モデル
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="evidence.html">
+            
+                <a href="evidence.html">
+            
+                    
+                    エビデンス函数の最大化
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >ベイス推定から見た線形モデル</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x30D9;&#x30A4;&#x30BA;&#x63A8;&#x5B9A;&#x306E;&#x7ACB;&#x5834;&#x304B;&#x3089;&#x898B;&#x305F;&#x7DDA;&#x5F62;&#x30E2;&#x30C7;&#x30EB;">&#x30D9;&#x30A4;&#x30BA;&#x63A8;&#x5B9A;&#x306E;&#x7ACB;&#x5834;&#x304B;&#x3089;&#x898B;&#x305F;&#x7DDA;&#x5F62;&#x30E2;&#x30C7;&#x30EB;</h1>
+<h1 id="&#x30D9;&#x30A4;&#x30BA;&#x7684;&#x306B;&#x53D6;&#x308A;&#x6271;&#x3046;&#x7DDA;&#x5F62;&#x30E2;&#x30C7;&#x30EB;">&#x30D9;&#x30A4;&#x30BA;&#x7684;&#x306B;&#x53D6;&#x308A;&#x6271;&#x3046;&#x7DDA;&#x5F62;&#x30E2;&#x30C7;&#x30EB;</h1>
+<p>&#x3053;&#x3053;&#x3067;&#x306F;&#x91CD;&#x307F;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x4E8B;&#x524D;&#x5206;&#x5E03;&#x3092;&#x5C0E;&#x5165;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#x30D9;&#x30A4;&#x30BA;&#x7684;&#x306B;&#x7DDA;&#x5F62;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x53D6;&#x308A;&#x6271;&#x3046;&#x3053;&#x3068;&#x306B;&#x3059;&#x308B;&#x3002;</p>
+<h2 id="&#x8A18;&#x53F7;&#x306E;&#x6574;&#x5099;">&#x8A18;&#x53F7;&#x306E;&#x6574;&#x5099;</h2>
+<p>PRML(&#x30D7;&#x30EA;&#x30D7;&#x30EA;&#x30D7;&#x30EB;&#x30F3;&#x30D7;&#x30EB;&#x30F3;)&#x306E;&#x8A18;&#x53F7;&#x306B;&#x5408;&#x308F;&#x305B;&#x308B;&#x305F;&#x3081;&#x306B;&#x4EE5;&#x4E0B;&#x3067;&#x7528;&#x3044;&#x308B;&#x8A18;&#x53F7;&#x306E;&#x78BA;&#x8A8D;&#x3092;&#x884C;&#x3046;.</p>
+<p>&#x57FA;&#x5E95;&#x95A2;&#x6570;, &#x3059;&#x306A;&#x308F;&#x3061;, <script type="math/tex; ">\phi_0, \phi_1,\dots,\phi_K</script> &#x3092;&#x51FD;&#x6570;&#x3068;&#x3057;&#x3066;&#x4E00;&#x6B21;&#x72EC;&#x7ACB;&#x306A;&#x51FD;&#x6570;&#x306E;&#x7D44;&#x3068;&#x3059;&#x308B;. &#x3079;&#x304D;&#x4E57;&#x3067;&#x3082;&#x826F;&#x3044;&#x3057;&#x3001;&#x4E2D;&#x5FC3;&#x304C;&#x4E92;&#x3044;&#x306B;&#x7570;&#x306A;&#x308B;&#x30AC;&#x30A6;&#x30B9;&#x51FD;&#x6570;&#x3067;&#x3082;&#x826F;&#x3044;.
+&#x3053;&#x308C;&#x3089;&#x306B;&#x5BFE;&#x3057;&#x3066;, <script type="math/tex; ">\phi(x)</script> &#x3092; <script type="math/tex; ">M:=(K+1)</script> &#x6B21;&#x5143;&#x306E;&#x30D9;&#x30AF;&#x30C8;&#x30EB;</p>
+<p><script type="math/tex; mode=display">
+\boldsymbol{\phi}(x)
+=
+\begin{bmatrix}
+\phi_0(x)\\
+\phi_1(x)\\
+\vdots
+\\
+\phi_K(x)
+\end{bmatrix}
+\in \mathbb{R}^M
+</script></p>
+<p>&#x3068;&#x304A;&#x304F;. &#x3053;&#x306E;&#x3068;&#x304D;, <script type="math/tex; ">\phi_0</script> &#x306F;&#x30D0;&#x30A4;&#x30A2;&#x30B9;&#x3092;&#x8868;&#x3059;&#x306E;&#x3067;&#x5B9A;&#x6570;&#x95A2;&#x6570;&#x3068;&#x3057;&#x3066;&#x3082;&#x826F;&#x3044;&#x3057;, &#x3059;&#x3067;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x5E73;&#x5747;&#x304C;0&#x3068;&#x3057;&#x3066;&#x6B63;&#x898F;&#x5316;&#x3055;&#x308C;&#x3066;&#x304A;&#x308A;&#x30D0;&#x30A4;&#x30A2;&#x30B9;&#x9805;&#x304C;&#x306A;&#x3044;&#x3068;&#x3057;&#x3066;&#x3082;&#x826F;&#x3044;&#xFF08;&#x306F;&#x305A;&#xFF09;.&#x307E;&#x305F;, &#x5165;&#x529B; <script type="math/tex; ">x</script> &#x306F;&#xFF11;&#x6B21;&#x5143;&#x3068;&#x9650;&#x5B9A;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x306F;&#x306A;&#x304F;&#x306A;&#x308B;.&#x3053;&#x3053;&#x3067;&#x306F;&#x3072;&#x3068;&#x307E;&#x305A; <script type="math/tex; ">x\in\mathbb{R}^d</script> &#x3068;&#x3057;&#x3066;&#x304A;&#x304F;.</p>
+<p>&#x89B3;&#x6E2C;&#x30C7;&#x30FC;&#x30BF;&#x306F;&#x6B21;&#x3067;&#x4E0E;&#x3048;&#x3089;&#x308C;&#x308B;&#x3068;&#x3059;&#x308B;:</p>
+<p><script type="math/tex; mode=display">
+\mathcal{D}_N=\{(x_n,y_n)\mid x\in\mathbb{R}^d,y_n\in\mathbb{R},n=1,2,\dots,N\}
+</script></p>
+<p>&#x3053;&#x308C;&#x306B;&#x5BFE;&#x3059;&#x308B;&#x8A08;&#x753B;&#x884C;&#x5217;&#x306F; <script type="math/tex; ">N</script> &#x884C; <script type="math/tex; ">M</script> &#x5217;&#x306E;&#x884C;&#x5217;</p>
+<p><script type="math/tex; mode=display">
+\Phi
+=
+\begin{bmatrix}
+\boldsymbol{\phi}(x_1)^\top \\
+\boldsymbol{\phi}(x_2)^\top \\
+\vdots \\
+\boldsymbol{\phi}(x_N)^\top
+\end{bmatrix}
+</script></p>
+<p>&#x3068;&#x306A;&#x308B;.</p>
+<p>&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x89B3;&#x6E2C;&#x3059;&#x308B;&#x969B;&#x306B;, &#x76EE;&#x6A19;&#x5909;&#x6570; <script type="math/tex; ">y</script> &#x306B;&#x306F;&#x30CE;&#x30A4;&#x30BA;&#x304C;&#x304B;&#x304B;&#x3063;&#x3066;&#x304A;&#x308A;&#x771F;&#x306E;&#x5024;&#x3068;&#x306E;&#x30BA;&#x30EC;&#x306F;&#x5E73;&#x5747;&#x304C;0&#x3067;&#x5206;&#x6563;&#x304C;(&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x64AE;&#x308A;&#x65B9;&#x306B;&#x3088;&#x3089;&#x305A;) <script type="math/tex; ">\beta^{-1}</script> &#x3067;&#x3042;&#x308B;&#x6B63;&#x898F;&#x5206;&#x5E03;&#x306B;&#x5F93;&#x3046;&#x3068;&#x3059;&#x308B;.</p>
+<p>&#x3053;&#x306E;&#x6642;, &#x5C24;&#x5EA6;&#x306F;</p>
+<p><script type="math/tex; mode=display">
+\begin{align}
+p(\boldsymbol{y}|\Phi, \boldsymbol{w},\beta)
+&=
+\prod_{n=1}^N \mathcal{N}(y_n-\langle \boldsymbol{w},\boldsymbol{\phi}(x_n)\rangle,0,\beta^{-1})\\
+&=
+\prod_{n=1}^M\left(\frac{\beta}{2\pi}\right)^{1/2}\exp\left(-\frac{\beta}{2}(y_n-\mu_n)^2\right)\\
+&=
+\left(\frac{\beta}{2\pi}\right)^{N/2}
+\exp
+\left(
+    -\frac{\beta}{2}\sum_{n=1}^N (y_n-\mu_n)^2
+\right) \\
+&=
+\left(\frac{\beta}{2\pi}\right)^{N/2}
+\exp
+\left(
+    (\boldsymbol{y}-\boldsymbol{\mu})^\top
+    \mathrm{diag}(\beta)
+    (\boldsymbol{y}-\boldsymbol{\mu})
+\right) \\
+&=
+\frac{1}{(2\pi)^{N/2}}
+\frac{1}{(\det \Sigma)^{1/2}}
+\exp
+\left(
+    (\boldsymbol{y}-\boldsymbol{\mu})^\top
+    \Sigma^{-1}
+    (\boldsymbol{y}-\boldsymbol{\mu})
+\right) \\
+&=
+\mathcal{N}(\boldsymbol{y}|\Phi\boldsymbol{w},\Sigma).
+\end{align}
+</script></p>
+<p>&#x3053;&#x3053;&#x3067; <script type="math/tex; ">\mu_n = \langle \boldsymbol{w},{\boldsymbol{\phi}(x_n)}\rangle</script>, <script type="math/tex; ">\boldsymbol{\mu}=\begin{bmatrix}\mu_n\end{bmatrix}=\Phi\boldsymbol{w}</script> &#x304A;&#x3088;&#x3073; <script type="math/tex; ">\Sigma = \beta^{-1}I_N</script> &#x3067;&#x3042;&#x308B;.</p>
+<h2 id="&#x30AC;&#x30A6;&#x30B9;&#x51FD;&#x6570;&#x578B;&#x306E;&#x4E8B;&#x524D;&#x3001;&#x4E8B;&#x5F8C;&#x5206;&#x5E03;&#x306E;&#x95A2;&#x4FC2;">&#x30AC;&#x30A6;&#x30B9;&#x51FD;&#x6570;&#x578B;&#x306E;&#x4E8B;&#x524D;&#x3001;&#x4E8B;&#x5F8C;&#x5206;&#x5E03;&#x306E;&#x95A2;&#x4FC2;</h2>
+<p>&#x91CD;&#x307F;&#x30D9;&#x30AF;&#x30C8;&#x30EB; <script type="math/tex; ">\boldsymbol{w}</script> &#x304C;&#x6B21;&#x306E;&#x5F62;&#x306E;&#x4E8B;&#x524D;&#x5206;&#x5E03;&#x3092;&#x6301;&#x3063;&#x3066;&#x3044;&#x308B;&#x3068;&#x3059;&#x308B;:</p>
+<p><script type="math/tex; mode=display">
+p(\boldsymbol{w})=\mathcal{N}(\boldsymbol{w}|\boldsymbol{m}_0,S_0).
+</script></p>
+<p>&#x3053;&#x306E;&#x4E8B;&#x524D;&#x5206;&#x5E03;&#x304B;&#x3089;&#x4E8B;&#x5F8C;&#x5206;&#x5E03; <script type="math/tex; ">p(\boldsymbol{w}|\boldsymbol{y})</script> &#x3082;&#x30AC;&#x30A6;&#x30B9;&#x51FD;&#x6570;&#x578B;&#x306B;&#x306A;&#x308A;, &#x5177;&#x4F53;&#x7684;&#x306B;&#x306F;&#x6B21;&#x3067;&#x4E0E;&#x3048;&#x3089;&#x308C;&#x308B;:</p>
+<p><script type="math/tex; mode=display">
+p(\boldsymbol{w}|\boldsymbol{y})=\mathcal{N}(\boldsymbol{w}|\boldsymbol{m}_N,S_N).
+</script></p>
+<p>&#x3053;&#x3053;&#x3067;,</p>
+<p><script type="math/tex; mode=display">
+S_N^{-1}
+=
+S_0^{-1}+\beta \Phi^{\top}\Phi,
+\quad
+\boldsymbol{m}_N
+= S_N^{-1}(S_0^{-1}\boldsymbol{m}_0+\beta\Phi^{\top}\boldsymbol{y}).
+</script></p>
+<p>&#x3053;&#x308C;&#x306F;&#x5171;&#x5F79;&#x4E8B;&#x524D;&#x5206;&#x5E03;,&#x6761;&#x4EF6;&#x3064;&#x304D;&#x30AC;&#x30A6;&#x30B9;&#x95A2;&#x6570;&#x578B;&#x306E;&#x4E00;&#x822C;&#x8AD6;&#x304B;&#x3089;&#x5C0E;&#x304B;&#x308C;&#x308B; (You can refer your Text book, p90 eq (2.116)):</p>
+<p><script type="math/tex; mode=display">
+\begin{align}
+p(\boldsymbol{x})
+&=
+ \mathcal{N}(\boldsymbol{x}|\mu,\Lambda^{-1}) \\
+p(\boldsymbol{y}|\boldsymbol{x})
+&=
+\mathcal{N}(\boldsymbol{y}|A\boldsymbol{x}+b,L^{-1})
+\\
+\Rightarrow
+\\
+p(\boldsymbol{y})
+&=\boldsymbol{N}(\boldsymbol{y}|A\boldsymbol{\mu}+\boldsymbol{b},L^{-1}+A\Lambda^{-1}A^{\top})\\
+p(\boldsymbol{x}|\boldsymbol{y})
+&=
+\mathcal{N}(\boldsymbol{x}|\Sigma(A^\top L(\boldsymbol{y}-\boldsymbol{b})+\Lambda\boldsymbol{\mu}),\Sigma),\quad \Sigma^{-1}=\Lambda+A^{\top}LA
+\end{align}
+</script></p>
+<p>&#x3053;&#x3053;&#x3067;&#x306F;&#x3001; <script type="math/tex; ">A=\Phi, S_0=\Lambda^{-1}, \boldsymbol{m}_0=\boldsymbol{\mu},\boldsymbol{b}=0,L=\beta I</script> &#x3068;&#x3057;&#x3066;&#x3044;&#x308B;.</p>
+<p>&#x3059;&#x3067;&#x306B;&#x8FF0;&#x3079;&#x3066;&#x3044;&#x308B;&#x304C;, &#x7C21;&#x5358;&#x306E;&#x305F;&#x3081;&#x306B;, <script type="math/tex; ">p(\boldsymbol{w})=p(\boldsymbol{w}|\alpha)=\mathcal{N}(\boldsymbol{w},0,\alpha^{-1} I)</script> &#x306E;&#x5834;&#x5408;&#x3092;&#x8003;&#x3048;&#x308B;&#x3068;,</p>
+<p><script type="math/tex; mode=display">
+S_N^{-1}
+=
+\alpha^{-1}I+\beta \Phi^{\top}\Phi,
+\quad
+\boldsymbol{m}_N
+= S_N^{-1}\beta\Phi^{\top}\boldsymbol{y}.
+</script></p>
+<p>&#x3067;&#x3042;&#x3063;&#x3066;,</p>
+<p><script type="math/tex; mode=display">
+\log p(\boldsymbol{w}|\boldsymbol{y})=-\frac{\beta}{2}\sum_{n=1}^N (y_n-\boldsymbol{w}^\top\boldsymbol{\phi}(x_n))^2-\frac{\alpha}{2}\boldsymbol{w}^\top\boldsymbol{w} +\mathrm{const}
+</script></p>
+<p>&#x8981;&#x3059;&#x308B;&#x306B;&#x6B63;&#x5247;&#x5316;&#x9805;&#x304C;&#x898B;&#x3048;&#x308B;.</p>
+<h1 id="&#x4E88;&#x6E2C;&#x5206;&#x5E03;">&#x4E88;&#x6E2C;&#x5206;&#x5E03;</h1>
+<p>&#x5B66;&#x7FD2;&#x524D;&#x306E; <script type="math/tex; ">\boldsymbol{w}</script> &#x306E;&#x4E8B;&#x524D;&#x5206;&#x5E03;&#x306F;&#x4E0A;&#x8A18;&#x306E;&#x3092;&#x8E0F;&#x8972;&#x3057;&#x3066;&#x9032;&#x3081;&#x308B;.
+&#x65B0;&#x3057;&#x3044;&#x5165;&#x529B; <script type="math/tex; ">x</script> &#x306B;&#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x51FA;&#x529B; <script type="math/tex; ">y</script> &#x306E;&#x5206;&#x5E03;&#x3092;&#x8003;&#x3048;&#x308B;.
+&#x3053;&#x308C;&#x306F;&#x4E8B;&#x524D;&#x5206;&#x5E03;&#x306B;&#x4F34;&#x3046; <script type="math/tex; ">\alpha</script> &#x3068;&#x30CE;&#x30A4;&#x30BA;&#x306B;&#x3068;&#x3082;&#x306A;&#x308B; <script type="math/tex; ">\beta</script> &#x3068;&#x5B66;&#x7FD2;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x3042;&#x308B;&#x76EE;&#x7684;&#x5909;&#x6570;&#x304C;&#x308F;&#x306E;&#x5024;&#x304B;&#x3089;&#x6C7A;&#x307E;&#x308B;&#x306E;&#x3067; <script type="math/tex; ">p(y|\boldsymbol{y},\alpha,\beta)</script> &#x3068;&#x66F8;&#x3051;&#x308B;.&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5B66;&#x7FD2;&#x3092;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067; <script type="math/tex; ">p(\boldsymbol{w})</script> &#x306E;&#x5206;&#x5E03;&#x304C;
+<script type="math/tex; mode=display">
+p(\boldsymbol{w})=\mathcal{N}(\boldsymbol{w}|\boldsymbol{m}_N,S_N)
+</script></p>
+<p>&#x306B;&#x66F4;&#x65B0;&#x3055;&#x308C;&#x308B;&#x3053;&#x3068;,</p>
+<p><script type="math/tex; mode=display">
+p(y|\boldsymbol{w})=\mathcal{N}(y|\boldsymbol{\phi}(x)\boldsymbol{w},\beta^{-1}I)
+</script></p>
+<p>&#x3067;&#x3042;&#x308B;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3059;&#x308B;&#x3068;&#x524D;&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x4E00;&#x822C;&#x8AD6;&#x3092;&#x7528;&#x3044;&#x308B;&#x3068;</p>
+<p><script type="math/tex; mode=display">
+p(y|\boldsymbol{y},\alpha,\beta)=\mathcal{N}(y|\langle \boldsymbol{\phi}(x),\boldsymbol{m}_N\rangle,\beta^{-1}+\boldsymbol{\phi}(x)^{\top}S_N\boldsymbol{\phi}(x)
+</script></p>
+<p>&#x65B0;&#x3057;&#x304F;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x5897;&#x3048;&#x308B;&#x305F;&#x3073;&#x306B;&#x5206;&#x6563;&#x304C;&#x5C0F;&#x3055;&#x304F;&#x306A;&#x308A;&#x3001;&#x6700;&#x7D42;&#x7684;&#x306B;&#x306F; <script type="math/tex; ">\beta^{-1}</script> &#x306B;&#x3088;&#x3063;&#x3066;&#x6C7A;&#x307E;&#x308B;&#x30CE;&#x30A4;&#x30BA;&#x306B;&#x4F9D;&#x5B58;&#x3059;&#x308B;&#xFF08;&#x3089;&#x3057;&#x3044;&#xFF09;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="bias_variance.html" class="navigation navigation-prev " aria-label="Previous page: バイアス・バリアンス分解">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="evidence.html" class="navigation navigation-next " aria-label="Next page: エビデンス函数の最大化">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"ベイス推定から見た線形モデル","level":"1.8","depth":1,"next":{"title":"エビデンス函数の最大化","level":"1.9","depth":1,"path":"src/evidence.md","ref":"src/evidence.md","articles":[]},"previous":{"title":"バイアス・バリアンス分解","level":"1.7","depth":1,"path":"src/bias_variance.md","ref":"src/bias_variance.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mathjax"],"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/bayesian_linear.md","mtime":"2018-11-25T14:31:27.251Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-25T14:32:43.478Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

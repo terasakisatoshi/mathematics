@@ -5,4 +5,5 @@
 * [正則化項のお気持ち](src/regular_term.md)
 * [MAP推定のお話](src/map_estimation.md)
 * [バイアス・バリアンス分解](src/bias_variance.md)
+* [ベイス推定から見た線形モデル](src/bayesian_linear.md)
 * [エビデンス函数の最大化](src/evidence.md)
