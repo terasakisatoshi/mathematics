@@ -60,7 +60,7 @@
     <link rel="next" href="bias_variance.html" />
     
     
-    <link rel="prev" href="../regular_term.md" />
+    <link rel="prev" href="regular_term.html" />
     
 
     </head>
@@ -141,9 +141,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="../regular_term.md">
+        <li class="chapter " data-level="1.5" data-path="regular_term.html">
             
-                <span>
+                <a href="regular_term.html">
             
                     
                     正則化項のお気持ち
@@ -266,6 +266,96 @@ p(\mathcal{D}_N|\theta)p(\theta) \\
 \left(\sum_{n=1}^N \log p(x_n|\theta)+\log p(\theta)\right)
 \end{align}
 </script></p>
+<h1 id="&#x30B3;&#x30A4;&#x30F3;&#x6295;&#x3052;&#x306E;&#x4F8B;">&#x30B3;&#x30A4;&#x30F3;&#x6295;&#x3052;&#x306E;&#x4F8B;</h1>
+<p>&#x30B3;&#x30A4;&#x30F3;&#x3092;&#x30C8;&#x30B9;&#x3057;&#x3066;&#x8868;&#x304C;&#x3067;&#x305F;&#x3068;&#x304D;1&#x3092;,&#x88CF;&#x304C;&#x51FA;&#x305F;&#x3068;&#x304D;&#x306B;0&#x3092;&#x3068;&#x308B;&#x78BA;&#x7387;&#x5909;&#x6570;&#x3092; <script type="math/tex; ">x</script> &#x3068;&#x7F6E;&#x304F;. &#x3053;&#x306E;&#x6642;&#x30B3;&#x30A4;&#x30F3;&#x306E;&#x88CF;&#x8868;&#x304C; <script type="math/tex; ">\theta</script> &#x306B;&#x3088;&#x3063;&#x3066;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x3068;&#x3057;, <script type="math/tex; ">p(x=1|\theta)=\theta,\ p(x=0|\theta)=1-\theta</script> &#x3060;&#x3068;&#x3059;&#x308B;. &#x3053;&#x306E;&#x78BA;&#x7387;&#x5909;&#x6570;&#x306F;&#x30D9;&#x30EB;&#x30CC;&#x30FC;&#x30A4;&#x5206;&#x5E03;&#x306B;&#x5F93;&#x3044;&#x3001;&#x305D;&#x308C;&#x306F;&#x6B21;&#x306E;&#x78BA;&#x7387;&#x5BC6;&#x5EA6;&#x95A2;&#x6570;&#x3092;&#x6301;&#x3064;:</p>
+<p><script type="math/tex; mode=display">
+\mathrm{Bern}(x;\theta)=\theta^x(1-\theta)^{1-x}
+</script></p>
+<p>&#x3053;&#x3053;&#x3067;, <script type="math/tex; ">N</script> &#x56DE;&#x30B3;&#x30A4;&#x30F3;&#x3092;&#x6295;&#x3052;&#x305F;&#x7D50;&#x679C;&#x3092;&#x8A18;&#x9332;&#x3057;&#x305F;&#x30C7;&#x30FC;&#x30BF;</p>
+<p><script type="math/tex; mode=display">
+\mathcal{D}_N=\{x_n;n=1,2,\dots,N,\ x_n\in \{0,1\}\}
+</script></p>
+<p>&#x306B;&#x95A2;&#x3059;&#x308B;&#x5C24;&#x5EA6;&#x306F;&#x6B21;&#x306E;&#x3088;&#x3046;&#x306B;&#x66F8;&#x3051;&#x308B;:</p>
+<p><script type="math/tex; mode=display">
+L(\theta)=\prod_{n=1}^N\mathrm{Bern}(x_n;\theta)=\prod_{n=1}^N \theta^{x_n}(1-\theta)^{1-x_n}.
+</script></p>
+<p>&#x3055;&#x3066;, &#x3053;&#x306E;&#x5C24;&#x5EA6;&#x3092;&#x6700;&#x5927;&#x306B;&#x3059;&#x308B; <script type="math/tex; ">\theta</script> &#x3092;&#x63A8;&#x5B9A;&#x3057;&#x3088;&#x3046;(&#x6700;&#x5C24;&#x63A8;&#x5B9A;&#x6CD5;).</p>
+<p>&#x5C24;&#x5EA6;&#x306E;&#x5BFE;&#x6570;</p>
+<p><script type="math/tex; mode=display">
+\log L = \sum_{n=1}^N \left(x_n\log\theta+(1-x_n)\log(1-\theta)\right)
+</script></p>
+<p>&#x3092;&#x5FAE;&#x5206;&#x3057;&#x3066;&#x6975;&#x5024;&#x3092;&#x3068;&#x308B; <script type="math/tex; ">\theta</script> &#x3092;&#x3068;&#x308B;&#x3068;</p>
+<p><script type="math/tex; mode=display">
+\begin{align}
+\frac{d}{d\theta}\log L
+&=
+\sum_{n=1}^N
+\left(
+    \frac{x_n}{\theta}-\frac{1-x_n}{1-\theta}
+\right)\\
+&=
+\frac{\sum_{n=1}^N x_n - N\theta}{\theta(1-\theta)}
+\end{align}
+</script>
+&#x3053;&#x308C;&#x304B;&#x3089;
+<script type="math/tex; mode=display">
+\theta=\frac{1}{N}\sum_{n=1}^N x_n
+</script>
+&#x3068;&#x306A;&#x308B;. &#x3053;&#x308C;&#x306F;, &#x8868;&#x304C;&#x51FA;&#x305F;&#x5272;&#x5408;&#x305D;&#x306E;&#x3082;&#x306E;&#x3067;&#x3042;&#x308B;.</p>
+<p>&#x3055;&#x3066;, <script type="math/tex; ">\theta</script> &#x306B;&#x306F;&#x6B21;&#x306E;&#x3088;&#x3046;&#x306A;&#x30D9;&#x30FC;&#x30BF;&#x5206;&#x5E03;&#x306B;&#x5F93;&#x3063;&#x3066;&#x3044;&#x305F;&#x3068;&#x3057;&#x3088;&#x3046;.&#x3044;&#x308F;&#x3086;&#x308B;&#x4E8B;&#x524D;&#x5206;&#x5E03;&#x3068;&#x3057;&#x3066;</p>
+<p><script type="math/tex; mode=display">
+\mathrm{Beta}(\theta;a,b)=\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\theta^{a-1}(1-\theta)^{b-1}
+</script></p>
+<p>&#x3068;&#x4E0E;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x305F;&#x3068;&#x3059;&#x308B;. MAP&#x63A8;&#x5B9A;&#x3067;&#x306F;</p>
+<p><script type="math/tex; mode=display">
+\begin{align}
+\log p(\mathcal{D}_N|\theta)+\log p(\theta)
+&=
+\sum_{n=1}^N \left(x_n\log\theta+(1-x_n)\log(1-\theta)\right)+(a-1)\log\theta +(b-1)\log(1-\theta)+\mathrm{const}
+\end{align}
+</script></p>
+<p>&#x3068;&#x306A;&#x308B;.&#x6700;&#x5C24;&#x63A8;&#x5B9A;&#x3068;&#x540C;&#x69D8;&#x306B;&#x3053;&#x306E;&#x95A2;&#x6570;&#x3092; <script type="math/tex; ">\theta</script> &#x3067;&#x5FAE;&#x5206;&#x3057;&#x3066;&#x305D;&#x306E;&#x5024;&#x304C;0&#x3068;&#x3059;&#x308B;&#x6761;&#x4EF6;&#x3092;&#x8AB2;&#x3059;&#x3068;</p>
+<p><script type="math/tex; mode=display">
+\theta=\frac{\sum_{n=1}^N + a-1}{N+(a+b-2)}
+</script></p>
+<p>&#x304C;&#x5F97;&#x3089;&#x308C;&#x308B;.&#x3053;&#x308C;&#x306F;&#x30B3;&#x30A4;&#x30F3;&#x3092; <script type="math/tex; ">(a+b-2)</script> &#x56DE;&#x30C8;&#x30B9;&#x3057;&#x3066; <script type="math/tex; ">(a-1)</script> &#x56DE;&#x3060;&#x3051;&#x8868;&#x304C;&#x51FA;&#x305F;&#x3068;&#x3044;&#x3046;&#x72B6;&#x614B;&#x304B;&#x3089;&#x3055;&#x3089;&#x306B; <script type="math/tex; ">N</script> &#x56DE;&#x6295;&#x3052;&#x3066; <script type="math/tex; ">\sum_{n-1}^N x_n</script> &#x56DE;&#x8868;&#x304C;&#x51FA;&#x305F;&#x3068;&#x3057;&#x3066;&#x5F97;&#x3089;&#x308C;&#x308B;&#x6700;&#x5C24;&#x63A8;&#x5B9A;&#x306E;&#x7D50;&#x679C;&#x3068;&#x4E00;&#x81F4;&#x3059;&#x308B;.</p>
+<h1 id="&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x3067;&#x306E;&#x4F8B;">&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x3067;&#x306E;&#x4F8B;</h1>
+<p>&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x306E;&#x4F8B;&#x3067;&#x306F; <script type="math/tex; ">\theta</script> &#x3068;&#x3057;&#x3066;&#x91CD;&#x307F;&#x30D9;&#x30AF;&#x30C8;&#x30EB; <script type="math/tex; ">\boldsymbol{w}</script> &#x304C;&#x5BFE;&#x5FDC;&#x3059;&#x308B;.</p>
+<p>&#x4EEE;&#x306B; <script type="math/tex; ">\boldsymbol{w}</script> &#x306E;&#x4E8B;&#x524D;&#x5206;&#x5E03; <script type="math/tex; ">p(\boldsymbol{w})</script> &#x3068;&#x3057;&#x3066;</p>
+<p><script type="math/tex; mode=display">
+\mathcal{N}(0, \sigma^2_{0}I_{M}) = \frac{1}{(2\pi\sigma_0^{2})^{M/2}} \exp\left(-\frac{1}{2\sigma_0^2}\boldsymbol{w}^{\top}\boldsymbol{w}\right)
+</script></p>
+<p>&#x304C;&#x4E0E;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x305F;&#x3068;&#x3057;&#x3088;&#x3046;. &#x3053;&#x3053;&#x3067; <script type="math/tex; ">M</script> &#x306F;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x6570;&#x3067;&#x3042;&#x308B;.</p>
+<p>&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x30E2;&#x30C7;&#x30EB;&#x3067;&#x8B70;&#x8AD6;&#x3057;&#x305F;&#x5BFE;&#x6570;&#x5C24;&#x5EA6;&#x306E;&#x8A08;&#x7B97;&#x306B;</p>
+<p><script type="math/tex; mode=display">
+-\frac{1}{\sigma^2} \sum_{n=1}^N (y_n-\langle\boldsymbol{w},\boldsymbol{x}\rangle)^2
+</script></p>
+<p>&#x304C;&#x3042;&#x3063;&#x305F;&#x3053;&#x3068;&#x3092;&#x601D;&#x3044;&#x51FA;&#x3059;&#x3068;</p>
+<p><script type="math/tex; mode=display">
+\begin{align}
+\hat{\boldsymbol{w}}
+&=
+\underset{\theta}{\mathrm{argmax}}\,
+\left(\sum_{n=1}^N \log p(y_n|\theta)+\log p(\theta)\right)\\
+&=
+\underset{\boldsymbol{w}}{\mathrm{argmax}}\,
+\left(\frac{1}{\sigma^2}\sum_{n=1}^N (y_n-\langle \boldsymbol{w},\boldsymbol{x}\rangle)^2+\frac{1}{\sigma_0^2}
+\langle
+\boldsymbol{w},\boldsymbol{w}
+\rangle
+\right)
+\end{align}
+</script></p>
+<p>&#x3053;&#x308C;&#x306F; <script type="math/tex; ">L^2</script> &#x6B63;&#x5247;&#x5316;&#x3092;&#x3064;&#x3051;&#x305F;&#x6700;&#x5C0F;&#x5024;&#x554F;&#x984C;&#x3092;&#x89E3;&#x304F;&#x3053;&#x3068;&#x306B;&#x5BFE;&#x5FDC;&#x3057;&#x3066;&#x3044;&#x308B;.</p>
+<p>&#x4ED6;&#x306B;&#x3082; <script type="math/tex; ">L^1</script> &#x3092;&#x3064;&#x3051;&#x308B; lasso &#x306E;&#x5834;&#x5408;&#x306F;&#x4E8B;&#x524D;&#x5206;&#x5E03;&#x3068;&#x3057;&#x3066;&#x30E9;&#x30D7;&#x30E9;&#x30B9;&#x5206;&#x5E03;</p>
+<p><script type="math/tex; mode=display">
+p(\boldsymbol{w})=\left(\frac{1}{2\eta}\right)^K \exp\left(-\frac{||\boldsymbol{w}||}{\eta}\right)
+</script></p>
+<p>&#x304C;&#x5BFE;&#x5FDC;&#x3059;&#x308B;. &#x5B9F;&#x969B;, &#x3053;&#x306E;&#x5BFE;&#x6570;&#x3092;&#x3068;&#x308B;&#x3068;</p>
+<p><script type="math/tex; mode=display">
+\log p(\boldsymbol{w})= -\frac{||\boldsymbol{w}||}{\eta}+\mathrm{const}
+</script></p>
+<p>&#x3068;&#x3044;&#x3046;&#x5F62;&#x3092;&#x3057;&#x3066;&#x3044;&#x308B;&#x304B;&#x3089;&#x3067;&#x3042;&#x308B;.</p>
 
                                 
                                 </section>
@@ -293,7 +383,7 @@ p(\mathcal{D}_N|\theta)p(\theta) \\
 
             
                 
-                <a href="../regular_term.md" class="navigation navigation-prev " aria-label="Previous page: 正則化項のお気持ち">
+                <a href="regular_term.html" class="navigation navigation-prev " aria-label="Previous page: 正則化項のお気持ち">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -309,7 +399,7 @@ p(\mathcal{D}_N|\theta)p(\theta) \\
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"MAP推定のお話","level":"1.6","depth":1,"next":{"title":"バイアス・バリアンス分解","level":"1.7","depth":1,"path":"src/bias_variance.md","ref":"src/bias_variance.md","articles":[]},"previous":{"title":"正則化項のお気持ち","level":"1.5","depth":1,"path":"regular_term.md","ref":"regular_term.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mathjax"],"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/map_estimation.md","mtime":"2018-11-24T14:30:05.877Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-25T11:05:18.824Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"MAP推定のお話","level":"1.6","depth":1,"next":{"title":"バイアス・バリアンス分解","level":"1.7","depth":1,"path":"src/bias_variance.md","ref":"src/bias_variance.md","articles":[]},"previous":{"title":"正則化項のお気持ち","level":"1.5","depth":1,"path":"src/regular_term.md","ref":"src/regular_term.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mathjax"],"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/map_estimation.md","mtime":"2018-11-25T12:45:22.753Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-25T12:45:35.465Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

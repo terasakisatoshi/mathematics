@@ -141,9 +141,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="../regular_term.md">
+        <li class="chapter " data-level="1.5" data-path="regular_term.html">
             
-                <span>
+                <a href="regular_term.html">
             
                     
                     正則化項のお気持ち
@@ -388,8 +388,23 @@ d\boldsymbol{x}.
 \mathbb{E}_\mathcal{D}[(y(\boldsymbol{x})-\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})])^2]+
 \mathbb{E}_\mathcal{D}[(\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})]-\mathbb{E}[y_t|\boldsymbol{x}])^2]
 </script></p>
-<p>&#x3068;&#x306A;&#x308B;. &#x7B2C;&#xFF11;&#x9805;&#x76EE;&#x3092;&#x4E8C;&#x4E57;&#x30D0;&#x30A4;&#x30A2;&#x30B9;&#x3001;&#xFF12;&#x9805;&#x76EE;
-&#x3092;&#x30D0;&#x30EA;&#x30A2;&#x30F3;&#x30B9;&#x3068;&#x3044;&#x3046;&#x3002;</p>
+<p>&#x3068;&#x306A;&#x308B;. &#xFF11;&#x9805;&#x76EE;
+&#x3092;&#x30D0;&#x30EA;&#x30A2;&#x30F3;&#x30B9;&#x3068;&#x3044;&#x3046;&#x3002;
+&#x7B2C;&#xFF12;&#x9805;&#x76EE;&#x3092;&#x4E8C;&#x4E57;&#x30D0;&#x30A4;&#x30A2;&#x30B9;&#x3068;&#x3044;&#x3046;.</p>
+<h1 id="&#x3053;&#x308C;&#x3089;&#x306E;&#x304A;&#x6C17;&#x6301;&#x3061;">&#x3053;&#x308C;&#x3089;&#x306E;&#x304A;&#x6C17;&#x6301;&#x3061;</h1>
+<ul>
+<li><p>&#x30D0;&#x30A4;&#x30A2;&#x30B9;&#x306F;&#x7406;&#x60F3;&#x7684;&#x306A; <script type="math/tex; ">\mathbb{E}[y_t|\boldsymbol{x}]</script> &#x3068;&#x69D8;&#x3005;&#x306A;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x7528;&#x3044;&#x3066;&#x5B66;&#x7FD2;&#x3055;&#x305B;&#x305F;&#x30E2;&#x30C7;&#x30EB;&#x306E;&#x51FA;&#x529B;&#x5024;&#x3068;&#x306E;&#x305A;&#x308C;&#x3092;&#x8868;&#x3057;&#x3001;&#x624B;&#x6CD5;&#x81EA;&#x4F53;&#x306E;&#x30BA;&#x30EC;&#x3092;&#x8868;&#x3059;.</p>
+</li>
+<li><p>&#x30D0;&#x30EA;&#x30A2;&#x30F3;&#x30B9;&#x306F;&#x7279;&#x5B9A;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3067;&#x5F97;&#x305F;&#x30E2;&#x30C7;&#x30EB; <script type="math/tex; ">y=y(\boldsymbol{x})</script> &#x3068;&#x5168;&#x3066;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x3068;&#x308A;&#x304B;&#x305F;&#x306B;&#x3064;&#x3044;&#x3066;&#x306E;&#x4E88;&#x6E2C;&#x5024;&#x3068;&#x306E;&#x30BA;&#x30EC;&#x306E;&#x5E73;&#x5747;&#x3092;&#x8868;&#x3059;.</p>
+</li>
+<li><p>&#x30CE;&#x30A4;&#x30BA;</p>
+</li>
+</ul>
+<p><script type="math/tex; mode=display">
+\iint (\mathbb{E}[y_t|\boldsymbol{x}]-y_t)^2 p(\boldsymbol{x},y_t)dy_td\boldsymbol{x}
+</script></p>
+<p>&#x7406;&#x60F3;&#x7684;&#x306A;&#x51FD;&#x6570;&#x3068;&#x5B9F;&#x969B;&#x306E;&#x5024;&#x3068;&#x306E;&#x30BA;&#x30EC;&#x3092;&#x8868;&#x3057;&#x3066;&#x3044;&#x308B;.</p>
+<p>&#x30E2;&#x30C7;&#x30EB;&#x306E;&#x8907;&#x96D1;&#x3055;&#x306B;&#x3088;&#x3063;&#x3066;&#x3053;&#x308C;&#x3089;&#x306E;&#x5024;&#x304C;&#x5909;&#x5316;&#x3059;&#x308B;.PRML&#x306A;&#x3069;&#x3067;&#x306F;&#x6B63;&#x5247;&#x5316;&#x9805;&#x306E;&#x5BC4;&#x4E0E; (&#x8981;&#x3059;&#x308B;&#x306B; <script type="math/tex; ">\lambda</script> ) &#x3092;&#x5909;&#x5316;&#x3055;&#x305B;&#x3066;&#x30D0;&#x30A4;&#x30A2;&#x30B9;&#x3068;&#x30D0;&#x30EA;&#x30A2;&#x30F3;&#x30B9;&#x306E;&#x30C8;&#x30EC;&#x30FC;&#x30C9;&#x30AA;&#x30D5;&#x3092;&#x8B70;&#x8AD6;&#x3057;&#x3066;&#x3044;&#x308B;.</p>
 
                                 
                                 </section>
@@ -433,7 +448,7 @@ d\boldsymbol{x}.
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"バイアス・バリアンス分解","level":"1.7","depth":1,"next":{"title":"エビデンス函数の最大化","level":"1.8","depth":1,"path":"src/evidence.md","ref":"src/evidence.md","articles":[]},"previous":{"title":"MAP推定のお話","level":"1.6","depth":1,"path":"src/map_estimation.md","ref":"src/map_estimation.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mathjax"],"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/bias_variance.md","mtime":"2018-11-24T15:14:31.703Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-25T11:05:18.824Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"バイアス・バリアンス分解","level":"1.7","depth":1,"next":{"title":"エビデンス函数の最大化","level":"1.8","depth":1,"path":"src/evidence.md","ref":"src/evidence.md","articles":[]},"previous":{"title":"MAP推定のお話","level":"1.6","depth":1,"path":"src/map_estimation.md","ref":"src/map_estimation.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mathjax"],"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/bias_variance.md","mtime":"2018-11-25T11:18:26.380Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-25T12:45:35.465Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
