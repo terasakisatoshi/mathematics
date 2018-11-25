@@ -2,7 +2,7 @@
 * [多変数のガウシアン](src/multivariable_gaussian.md)
 * [線形モデル(PRML Chap3)](src/linear_model.md)
 * [ラグランジュ未定係数法](src/lagrange_multiplier.md)
-* [正則化項のお気持ち](regular_term.md)
+* [正則化項のお気持ち](src/regular_term.md)
 * [MAP推定のお話](src/map_estimation.md)
 * [バイアス・バリアンス分解](src/bias_variance.md)
 * [エビデンス函数の最大化](src/evidence.md)
