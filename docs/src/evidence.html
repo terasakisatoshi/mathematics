@@ -249,7 +249,138 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p><a href="https://qiita.com/amber_kshz/items/35bf3ef761e4d3b248b3" target="_blank">This article is helpful</a></p>
+                                <h1 id="&#x30A8;&#x30D3;&#x30C7;&#x30F3;&#x30B9;&#x51FD;&#x6570;&#x306E;&#x8A55;&#x4FA1;">&#x30A8;&#x30D3;&#x30C7;&#x30F3;&#x30B9;&#x51FD;&#x6570;&#x306E;&#x8A55;&#x4FA1;</h1>
+<p>&#x30D9;&#x30A4;&#x30B9;&#x7684;&#x306A;&#x30A2;&#x30D7;&#x30ED;&#x30FC;&#x30C1;&#x3067;&#x7DDA;&#x5F62;&#x30E2;&#x30C7;&#x30EB;&#x306F; <script type="math/tex; ">\alpha, \beta</script> &#x3068;&#x3044;&#x3046;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306B;&#x4F9D;&#x5B58;&#x3057;&#x3066;&#x3044;&#x308B;.&#x3053;&#x308C;&#x306F;&#x5B66;&#x7FD2;&#x524D;&#x306B;&#x4E8B;&#x524D;&#x306B;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x308B;&#x30CF;&#x30A4;&#x30D1;&#x30FC;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3067;&#x3042;&#x308B;.&#x9069;&#x5207;&#x306A;&#x30CF;&#x30A4;&#x30D1;&#x30FC;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x9078;&#x629E;&#x65B9;&#x6CD5;&#x306B;&#x3064;&#x3044;&#x3066;&#x8B70;&#x8AD6;&#x3059;&#x308B;. <script type="math/tex; ">\alpha,\beta</script> &#x5171;&#x306B;&#x78BA;&#x7387;&#x5909;&#x6570;&#x3068;&#x307F;&#x306A;&#x3057;, &#x3042;&#x3089;&#x304B;&#x3058;&#x3081;&#x89B3;&#x6E2C;&#x3057;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x95A2;&#x3059;&#x308B;&#x5C24;&#x5EA6;&#x3092;&#x8003;&#x3048;&#x308B;.</p>
+<p><script type="math/tex; mode=display">
+p(y|\alpha,\beta)
+=
+\int p(\boldsymbol{y}|\boldsymbol{w},\alpha,\beta)p(\boldsymbol{w}|\alpha,\beta)d\boldsymbol{w}.
+</script></p>
+<p>&#x3053;&#x308C;&#x3092;&#x30A8;&#x30D3;&#x30C7;&#x30F3;&#x30B9;&#x51FD;&#x6570;&#x3068;&#x3044;&#x3046;.&#x6211;&#x3005;&#x306F;&#x3053;&#x308C;&#x3092;&#x6700;&#x5927;&#x5316;&#x3059;&#x308B;&#x3088;&#x3046;&#x306A;&#x30CF;&#x30A4;&#x30D1;&#x30FC;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x9078;&#x629E;&#x3059;&#x308B;&#x3068;&#x3053;&#x306B;&#x3059;&#x308B;. &#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x3068;&#x3059;&#x308B;&#x5C24;&#x5EA6;&#x306F;&#x6B21;&#x306E;&#x3088;&#x3046;&#x306B;&#x7DDA;&#x5F62;&#x30E2;&#x30C7;&#x30EB;&#x51FA;&#x304B;&#x3051;&#x308B;&#x5834;&#x5408;&#x306B;&#x5F93;&#x3046;&#x5206;&#x5E03;&#x3068;&#x4E8B;&#x524D;&#x5206;&#x5E03;&#x306E;&#x7A4D;&#x3092;&#x7A4D;&#x5206;&#x3057;&#x5F62;&#x306B;&#x5206;&#x89E3;&#x3067;&#x304D;&#x308B;:</p>
+<p><script type="math/tex; mode=display">
+\begin{align}
+p(\boldsymbol{y}|\alpha,\beta)
+&=
+\int p(\boldsymbol{y}|\boldsymbol{w},\alpha,\beta)p(\boldsymbol{w}|\alpha,\beta)d\boldsymbol{w}\\
+&=
+\int p(\boldsymbol{y}|\boldsymbol{w},\beta)p(\boldsymbol{w}|\alpha)d\boldsymbol{w}
+\\
+&=
+\int\prod_{n=1}^N\mathcal{N}(y_n|\langle \boldsymbol{w},\boldsymbol{\phi}(x_n)\rangle,\beta^{-1})\mathcal{N}(\boldsymbol{w}|0,\alpha^{-1}I_M)d\boldsymbol{w} \\
+&=
+\left(
+\frac{\beta}{2\pi}
+\right)^{N/2}
+\left(
+\frac{\alpha}{2\pi}
+\right)^{M/2}
+ \int \exp(-E(\boldsymbol{w}))d\boldsymbol{w}.
+\end{align}
+</script></p>
+<p>&#x3053;&#x3053;&#x3067; <script type="math/tex; ">M</script> &#x306F;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x6570;, <script type="math/tex; ">N</script> &#x306F;&#x5B66;&#x7FD2;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x6570;&#x3067;&#x3042;&#x308A;,</p>
+<p><script type="math/tex; mode=display">
+E(\boldsymbol{w})=-\frac{\beta}{2}||\boldsymbol{y}-\Phi\boldsymbol{w}||{}_2^2 + \frac{\alpha}{2}||\boldsymbol{w}||{}_2^2
+</script></p>
+<p>&#x3068;&#x7F6E;&#x3044;&#x3066;&#x3044;&#x308B;. <script type="math/tex; ">E(\boldsymbol{w})</script> &#x3092; <script type="math/tex; ">\boldsymbol{m}_N=\beta S_N\Phi^{\top}\boldsymbol{y}</script> &#x3092;&#x7528;&#x3044;&#x3066;</p>
+<p><script type="math/tex; mode=display">
+E(\boldsymbol{w})=E(\boldsymbol{m}_N)+\frac{1}{2}(\boldsymbol{w}-\boldsymbol{m}_N)^{\top}S_N^{-1}(\boldsymbol{w}_N-\boldsymbol{m}_N)
+</script></p>
+<p>&#x306E;&#x3088;&#x3046;&#x306B;&#x5206;&#x89E3;&#x3059;&#x308B;(&#x8A08;&#x7B97;&#x7565;).&#x4EE5;&#x4E0B;&#x3001;&#x3053;&#x308C;&#x3092;&#x8A8D;&#x3081;,</p>
+<p><script type="math/tex; mode=display">
+A:=S_N^{-1}=\alpha I+\beta\Phi^{\top}\Phi
+</script></p>
+<p>&#x3068;&#x304A;&#x304F;&#x3068;</p>
+<p><script type="math/tex; mode=display">
+\begin{align}
+\int \exp(-E(\boldsymbol{w}))d\boldsymbol{w}
+&=
+\exp(-E(\boldsymbol{m}_N))\int \exp\left(-\frac{1}{2}(\boldsymbol{w}-\boldsymbol{m}_N)^{\top}A(\boldsymbol{w}-\boldsymbol{m}_N)\right)d\boldsymbol{w}\\
+&=
+\exp(-E(\boldsymbol{m}_N))(2\pi)^{M/2}(\det A)^{-1/2}
+\end{align}
+</script></p>
+<p>&#x3068;&#x8A08;&#x7B97;&#x3067;&#x304D;&#x308B;. &#x5F93;&#x3063;&#x3066;, &#x30A8;&#x30D3;&#x30C7;&#x30F3;&#x30B9;&#x51FD;&#x6570;&#x306E;&#x5BFE;&#x6570;&#x3092;&#x3068;&#x308B;&#x3068;</p>
+<p><script type="math/tex; mode=display">
+\log p(\boldsymbol{y}|\alpha,\beta)=\frac{M}{2}\log\alpha+\frac{N}{2}\log\beta -E(\boldsymbol{m}_N)-\frac{1}{2}\log \det A +\mathrm{const}
+</script></p>
+<p>&#x3068;&#x306A;&#x308B;.&#x3053;&#x308C;&#x3092;&#x6700;&#x5927;&#x5316;&#x3059;&#x308B;&#x3053;&#x3068;&#x3092;&#x8003;&#x3048;&#x305F;&#x3044;.</p>
+<h2 id="alpha-&#x306B;&#x95A2;&#x3057;&#x3066;&#x6700;&#x5927;&#x5316;"><script type="math/tex; ">\alpha</script> &#x306B;&#x95A2;&#x3057;&#x3066;&#x6700;&#x5927;&#x5316;</h2>
+<p>&#x6211;&#x3005;&#x306F; <script type="math/tex; ">\alpha</script> &#x306E;&#x5FAE;&#x5206;&#x3092;&#x6C42;&#x3081;&#x3066;&#x304D;&#x305F;&#x3044;. &#x884C;&#x5217; <script type="math/tex; ">A</script> &#x306E;&#x884C;&#x5217;&#x5F0F;&#x306E;&#x5FAE;&#x5206;&#x3092;&#x8A08;&#x7B97;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x3001;<script type="math/tex; ">A</script> &#x306E;&#x56FA;&#x6709;&#x5024;&#x3092;&#x8A08;&#x7B97;&#x3059;&#x308B;&#x3053;&#x3068;&#x3092;&#x8003;&#x3048;&#x308B;. &#x5929;&#x4E0B;&#x308A;&#x3067;&#x3042;&#x308B;&#x304C;</p>
+<p><script type="math/tex; mode=display">
+(\beta\Phi^{\top}\Phi)u=\lambda u
+</script></p>
+<p>&#x3068;&#x3044;&#x3046;&#x56FA;&#x6709;&#x65B9;&#x7A0B;&#x5F0F;&#x3092;&#x89E3;&#x304F;&#x3053;&#x3068;&#x306B;&#x3059;&#x308B;.&#x5BFE;&#x79F0;&#x884C;&#x5217;&#x306A;&#x306E;&#x3067;&#x5BFE;&#x89D2;&#x5316;&#x3067;&#x304D;&#x308B;.&#x91CD;&#x8907;&#x3082;&#x8FBC;&#x3081;&#x3066; <script type="math/tex; ">\lambda_1,\dots,\lambda_M</script> &#x304C;&#x5F97;&#x3089;&#x308C;&#x305F;&#x3068;&#x3059;&#x308B;. &#x3053;&#x306E;&#x6642; <script type="math/tex; ">A</script> &#x306E;&#x56FA;&#x6709;&#x5024;&#x306F; <script type="math/tex; ">\alpha+\lambda</script> &#x306E;&#x5F62;&#x306B;&#x66F8;&#x3051;&#x308B;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3059;&#x308B;&#x3068;</p>
+<p><script type="math/tex; mode=display">
+\frac{\partial}{\partial\alpha}\log \det A
+=
+\frac{d}{d\alpha}\log\left(\prod_{i=1}^M(\alpha+\lambda_i)\right)=\sum_{i=1}^M \frac{1}{\lambda_i+\alpha}
+</script></p>
+<p>&#x5F93;&#x3063;&#x3066;,
+<script type="math/tex; mode=display">
+\frac{\partial}{\partial\alpha}\log p(\boldsymbol{y}|\alpha,\beta)=\frac{M}{2\alpha}-\frac{1}{2}\langle\boldsymbol{m}_N,\boldsymbol{m}_N\rangle-\frac{1}{2}\sum_{i=1}^M \frac{1}{\lambda_i+\alpha}
+</script></p>
+<p>&#x3053;&#x306E;&#x5024;&#x304C; 0 &#x306B;&#x306A;&#x308B;&#x3053;&#x3068;&#x3092;&#x8981;&#x8ACB;&#x3059;&#x308B;&#x3068;</p>
+<p><script type="math/tex; mode=display">
+\alpha
+\langle\boldsymbol{m}_N,\boldsymbol{m}_N\rangle
+=M-\alpha\sum_{i=1}^M\frac{1}{\lambda_i+\alpha}
+</script></p>
+<p>&#x3068;&#x3044;&#x3046; <script type="math/tex; ">\alpha</script> &#x306B;&#x95A2;&#x3059;&#x308B;&#x65B9;&#x7A0B;&#x5F0F;&#x304C;&#x51FA;&#x6765;&#x4E0A;&#x304C;&#x308B;.
+&#x3053;&#x3053;&#x3067;, &#x53F3;&#x8FBA;&#x3092; <script type="math/tex; ">\gamma</script> &#x3068;&#x304A;&#x304F;&#x3068;,</p>
+<p><script type="math/tex; ">\gamma=
+M-\alpha\sum_{i=1}^M\frac{1}{\lambda_i+\alpha}
+=\sum_{i=1}^M\left(1-\frac{\alpha}{\lambda_i+\alpha}\right)
+=
+\sum_{i=1}^M\frac{\lambda_i}{\lambda_i+\alpha}
+</script></p>
+<p>&#x3068;&#x5909;&#x5F62;&#x3067;&#x304D;&#x308B;. &#x307E;&#x3068;&#x3081;&#x308B;&#x3068;</p>
+<p><script type="math/tex; mode=display">
+\alpha=\frac{\gamma}{\langle\boldsymbol{m}_N,\boldsymbol{m}_N\rangle}
+</script></p>
+<p>&#x3068;&#x306A;&#x308B;. &#x305F;&#x3060;&#x3057;, &#x53F3;&#x8FBA;&#x3082; <script type="math/tex; ">\alpha</script> &#x306B;&#x4F9D;&#x5B58;&#x3057;&#x3066;&#x3044;&#x308B;&#x306E;&#x3067;&#x3000;&#x967D;&#x306B;&#x6C42;&#x307E;&#x308B;&#x5F62;&#x3092;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;.&#x305D;&#x3053;&#x3067;&#x6570;&#x5024;&#x8A08;&#x7B97;&#x7684;&#x306B;&#x6C42;&#x3081;&#x308B;&#x3053;&#x3068;&#x306B;&#x3059;&#x308B;.</p>
+<h2 id="alpha&#x306E;&#x9010;&#x6B21;&#x8A08;&#x7B97;"><script type="math/tex; ">\alpha</script>&#x306E;&#x9010;&#x6B21;&#x8A08;&#x7B97;</h2>
+<p>&#x307E;&#x305A; <script type="math/tex; ">\alpha</script> &#x306E;&#x521D;&#x671F;&#x5024;&#x3092;&#x6C7A;&#x3081;&#x308B;.<script type="math/tex; ">\gamma</script> &#x3092;
+<script type="math/tex; mode=display">
+\gamma=\sum_{i=1}^M\frac{\lambda_i}{\lambda_i+\alpha}
+</script></p>
+<p>&#x3067;&#x5B9A;&#x7FA9;&#x3059;&#x308B;. &#x3053;&#x306E;&#x6642;&#x56FA;&#x6709;&#x5024;&#x306F; <script type="math/tex; ">\alpha</script> &#x306B;&#x4F9D;&#x5B58;&#x305B;&#x305A;&#x5B9A;&#x307E;&#x308B;&#x306E;&#x3067; <script type="math/tex; ">\alpha</script>&#x306E;&#x66F4;&#x65B0;&#x306E;&#x305F;&#x3081;&#x306B;&#x308F;&#x3056;&#x308F;&#x3056;&#x518D;&#x8A08;&#x7B97;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x306F;&#x306A;&#x3044;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3057;&#x3066;&#x304A;&#x304F;.&#x4E00;&#x65B9;&#x3067; <script type="math/tex; ">m_N</script> &#x306F; <script type="math/tex; ">\alpha</script> &#x306B;&#x4F9D;&#x5B58;&#x3059;&#x308B;&#x306E;&#x3067;</p>
+<p><script type="math/tex; ">\boldsymbol{m}_N
+=
+\beta S_N\Phi^{\top}\boldsymbol{y}
+=
+\beta(\alpha I+\beta\Phi^{\top}\Phi)\Phi^{\top}\boldsymbol{y}
+</script></p>
+<p>&#x3067;&#x5B9A;&#x3081;&#x308B;&#x5F0F;&#x3067;&#x5B9A;&#x7FA9;&#x3059;&#x308B;.</p>
+<p>&#x305D;&#x3057;&#x3066;&#x65B0;&#x3057;&#x3044; <script type="math/tex; ">\alpha_{\mathrm{new}}</script> &#x3092;</p>
+<p><script type="math/tex; mode=display">
+\alpha_{\mathrm{new}}=\frac{\gamma}{\langle\boldsymbol{m}_N,\boldsymbol{m}_N\rangle}
+</script></p>
+<p>&#x3067;&#x5B9A;&#x7FA9;&#x3059;&#x308B;.&#x3053;&#x308C;&#x3067; <script type="math/tex; ">\alpha</script> &#x3092;&#x66F4;&#x65B0;&#x3057;&#x3066;&#x53CE;&#x675F;&#x5148;&#x3092;&#x6C7A;&#x5B9A;&#x3059;&#x308B;.</p>
+<h2 id="beta-&#x306E;&#x6C7A;&#x5B9A;"><script type="math/tex; ">\beta</script> &#x306E;&#x6C7A;&#x5B9A;</h2>
+<p>&#x4E0A;&#x8A18;&#x30A2;&#x30EB;&#x30B4;&#x30EA;&#x30BA;&#x30E0;&#x3067; <script type="math/tex; ">\alpha</script> &#x3092;&#x6C7A;&#x3081;&#x305F;&#x3068;&#x3059;&#x308B;.&#x30A8;&#x30D3;&#x30C7;&#x30F3;&#x30B9;&#x51FD;&#x6570;&#x3092; <script type="math/tex; ">\beta</script> &#x3067;&#x5FAE;&#x5206;&#x3059;&#x308B;.</p>
+<p>&#x307E;&#x305A;&#x6B21;&#x304C;&#x6210;&#x308A;&#x7ACB;&#x3064;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3059;&#x308B;(&#x5F53;&#x305F;&#x308A;&#x524D;&#x306E;&#x3088;&#x3046;&#x3067;&#x306A;&#x304B;&#x306A;&#x304B;&#x6C17;&#x3065;&#x304D;&#x306B;&#x304F;&#x3044;):</p>
+<p><script type="math/tex; mode=display">
+\frac{d\lambda_i}{d\beta}=\frac{\lambda_i}{\beta}.
+</script></p>
+<p>&#x5B9F;&#x969B;, <script type="math/tex; ">\lambda_i</script> &#x306E;&#x5B9A;&#x7FA9;(&#x884C;&#x5217;&#x306E;&#x56FA;&#x6709;&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x3067;&#x3042;&#x308B;&#x3053;&#x3068;)
+&#x304B;&#x3089; <script type="math/tex; ">\lambda_i=c_i\beta</script> &#x306E;&#x3088;&#x3046;&#x306B;&#x66F8;&#x3051;&#x308B;.&#x5F93;&#x3063;&#x3066;,</p>
+<p><script type="math/tex; mode=display">
+\frac{d\lambda_i}{d\beta}=c_i=\frac{\lambda_i}{\beta}.
+</script></p>
+<p>&#x3053;&#x308C;&#x3092;&#x7528;&#x3044;&#x308B;&#x3068;</p>
+<p><script type="math/tex; mode=display">
+\frac{\partial}{\partial\beta}\log\det A =\frac{\partial}{\partial\beta}\sum_{i=1}^M\log(\lambda_i+\alpha)=\frac{1}{\beta}\sum_{i=1}^M \frac{\lambda_i}{\lambda_i+\alpha}=\frac{\gamma}{\beta}
+</script></p>
+<p>&#x3053;&#x308C;&#x304B;&#x3089;&#x30A8;&#x30D3;&#x30C7;&#x30F3;&#x30B9;&#x51FD;&#x6570;&#x306E; <script type="math/tex; ">\beta</script> &#x306B;&#x3088;&#x308B;&#x5FAE;&#x5206;&#x304C;0&#x306B;&#x306A;&#x308B;&#x3053;&#x3068;&#x3092;&#x8981;&#x8ACB;&#x3059;&#x308B;&#x3068; <script type="math/tex; ">\beta</script> &#x306B;&#x3064;&#x3044;&#x3066;&#x306E;&#x65B9;&#x7A0B;&#x5F0F;</p>
+<p><script type="math/tex; mode=display">
+\frac{1}{\beta}=\frac{1}{N-\gamma}\sum_{n=1}^N(y_n-\boldsymbol{m}_N^\top\boldsymbol{\phi}(x_n))^2
+</script></p>
+<p>&#x3092;&#x5F97;&#x308B;.</p>
+<p>&#x3053;&#x306E;&#x65B9;&#x7A0B;&#x5F0F;&#x306E;&#x53F3;&#x8FBA;&#x306F; <script type="math/tex; ">\gamma</script> &#x3092;&#x542B;&#x3080;&#x305F;&#x3081; <script type="math/tex; ">\beta</script> &#x306B;&#x4F9D;&#x5B58;&#x3059;&#x308B; ( <script type="math/tex; ">\lambda_i</script> &#x3068; <script type="math/tex; ">\beta</script> &#x306E;&#x95A2;&#x4FC2;&#x306B;&#x6CE8;&#x610F;).</p>
+<p>&#x5F93;&#x3063;&#x3066;&#x6570;&#x5024;&#x8A08;&#x7B97;&#x7684;&#x306B; <script type="math/tex; ">\beta</script> &#x3092;&#x6C42;&#x3081;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;.</p>
+<p>&#x4EE5;&#x4E0A;&#x306E;&#x30D7;&#x30ED;&#x30BB;&#x30B9;(&#x30C1;&#x30FC;&#x30BA;)&#x3092;&#x5F97;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x3063;&#x3066;&#x30A8;&#x30D3;&#x30C7;&#x30F3;&#x30B9;&#x51FD;&#x6570;&#x3092;&#x6700;&#x5927;&#x306B;&#x3059;&#x308B;&#x30CF;&#x30A4;&#x30D1;&#x30FC;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x6C7A;&#x5B9A;&#x3067;&#x304D;&#x308B;.</p>
+<h1 id="implementation">Implementation</h1>
+<p><a href="https://qiita.com/amber_kshz/items/35bf3ef761e4d3b248b3" target="_blank">This article is helpful</a></p>
 
                                 
                                 </section>
@@ -289,7 +420,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"エビデンス函数の最大化","level":"1.9","depth":1,"previous":{"title":"ベイス推定から見た線形モデル","level":"1.8","depth":1,"path":"src/bayesian_linear.md","ref":"src/bayesian_linear.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mathjax"],"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/evidence.md","mtime":"2018-11-24T15:25:04.550Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-25T14:32:43.478Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"エビデンス函数の最大化","level":"1.9","depth":1,"previous":{"title":"ベイス推定から見た線形モデル","level":"1.8","depth":1,"path":"src/bayesian_linear.md","ref":"src/bayesian_linear.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mathjax"],"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/evidence.md","mtime":"2018-11-25T16:03:08.305Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-25T16:03:23.777Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
