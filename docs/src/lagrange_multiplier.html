@@ -198,7 +198,7 @@
                 <a href="evidence.html">
             
                     
-                    エビデンス函数の最大化
+                    エビデンス
             
                 </a>
             
@@ -252,7 +252,37 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x30E9;&#x30B0;&#x30E9;&#x30F3;&#x30B8;&#x30E5;&#x672A;&#x5B9A;&#x4FC2;&#x6570;&#x6CD5;">&#x30E9;&#x30B0;&#x30E9;&#x30F3;&#x30B8;&#x30E5;&#x672A;&#x5B9A;&#x4FC2;&#x6570;&#x6CD5;</h1>
-<p>&#x30E9;&#x30B0;&#x30E9;&#x30F3;&#x30B8;&#x30E5;&#x672A;&#x5B9A;&#x4FC2;&#x6570;&#x6CD5;&#x306E;&#x5FC3;&#x306F;
+<h1 id="">#</h1>
+<p>2 &#x5909;&#x6570;&#x51FD;&#x6570; <script type="math/tex; ">f=f(x,y)=x^2-y^2</script> &#x306E; <script type="math/tex; ">g=g(x,y)=x^2+y^2=0</script> &#x6761;&#x4EF6;&#x4E0B;&#x3067;&#x306E;&#x6761;&#x4EF6;&#x4ED8;&#x304D;&#x6975;&#x5024;&#x3092;&#x8003;&#x3048;&#x308B;. &#x3053;&#x308C;&#x306F; <script type="math/tex; ">\lambda</script> &#x3092;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;, <script type="math/tex; ">g</script> &#x3092;&#x51FD;&#x6570;&#x3068;&#x307F;&#x306A;&#x3057;&#x305F;&#x3068;&#x304D;&#x306E;&#x30E9;&#x30B0;&#x30E9;&#x30F3;&#x30B8;&#x30E5;&#x51FD;&#x6570;</p>
+<p><script type="math/tex; mode=display">
+\begin{align}
+L=L(x,y;\lambda)
+&= f(x,y)+\lambda g(x,y) \\
+&= x^2+y^2+\lambda(x^2-y^2)
+
+\end{align}
+</script></p>
+<p>&#x306E;&#x6975;&#x5024;&#x554F;&#x984C;&#x3092;&#x89E3;&#x304F;&#x3053;&#x3068;&#x306B;&#x76F8;&#x5F53;&#x3059;&#x308B;:</p>
+<p><script type="math/tex; mode=display">
+\frac{\partial L}{\partial x}
+=
+\frac{\partial L}{\partial y}
+=
+\frac{\partial L}{\partial \lambda}
+=
+0
+</script></p>
+<p><script type="math/tex; mode=display">
+\begin{align}
+\frac{\partial L}{\partial x}
+&= 2x+2\lambda x = 2x(1+\lambda) = 0,\\
+\frac{\partial L}{\partial y}
+&=
+2y-2\lambda y =2y(1-\lambda) = 0
+\end{align}
+</script></p>
+<p>&#x3053;&#x308C;&#x3092;&#x89E3;&#x304F;&#x3068;, <script type="math/tex; ">\lambda=1</script> &#x306E;&#x5834;&#x5408;, <script type="math/tex; ">(x,y)=(\pm 1,0)</script> &#x3067;&#x6975;&#x5927;&#x5024;&#x3092;, <script type="math/tex; ">\lambda=-1</script> &#x306E;&#x5834;&#x5408;, <script type="math/tex; ">(x,y)=(0,\pm 1)</script> &#x3067;&#x6975;&#x5C0F;&#x5024;&#x3092;&#x3068;&#x308B;. </p>
+<p>&#x30E9;&#x30B0;&#x30E9;&#x30F3;&#x30B8;&#x30E5;&#x672A;&#x5B9A;&#x4FC2;&#x6570;&#x6CD5;&#x306E;&#x5FC3;&#x306F;
 <a href="http://www.yunabe.jp/docs/lagrange_multiplier.html" target="_blank">&#x3053;&#x306E;&#x8A18;&#x4E8B;&#x304C;&#x3068;&#x3066;&#x3082;&#x53C2;&#x8003;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;</a></p>
 <p><a href="https://gist.github.com/terasakisatoshi/1efa34e74be83ee73c7ca5c9cc381c3a" target="_blank">See</a></p>
 <script src="https://gist.github.com/terasakisatoshi/1efa34e74be83ee73c7ca5c9cc381c3a.js"></script>
@@ -299,7 +329,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ラグランジュ未定係数法","level":"1.4","depth":1,"next":{"title":"正則化項のお気持ち","level":"1.5","depth":1,"path":"src/regular_term.md","ref":"src/regular_term.md","articles":[]},"previous":{"title":"線形モデル(PRML Chap3)","level":"1.3","depth":1,"path":"src/linear_model.md","ref":"src/linear_model.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mathjax"],"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/lagrange_multiplier.md","mtime":"2018-11-25T11:00:31.267Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-25T16:28:54.605Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ラグランジュ未定係数法","level":"1.4","depth":1,"next":{"title":"正則化項のお気持ち","level":"1.5","depth":1,"path":"src/regular_term.md","ref":"src/regular_term.md","articles":[]},"previous":{"title":"線形モデル(PRML Chap3)","level":"1.3","depth":1,"path":"src/linear_model.md","ref":"src/linear_model.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mathjax"],"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/lagrange_multiplier.md","mtime":"2018-11-26T08:31:17.129Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-26T08:31:32.580Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
