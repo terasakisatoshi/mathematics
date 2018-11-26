@@ -9,6 +9,10 @@ $$
 
 定義により様々な $$\boldsymbol{x}$$ を観測した際の $$y(\boldsymbol{x})$$ と $$y_t$$ のズレの平均を表している.
 
+## ここで言いたいこと
+
+上記の損失は 2乗バイアス + バリアンス + ノイズ に分解される、モデルの複雑に応じてこれらの値は変化し、２乗バイアスとバリアンスはトレードオフの関係にある.
+
 ## ズレを最小にする函数
 このズレを最小にする $$y=y(\boldsymbol{x})$$ は次のように書ける:
 
@@ -172,7 +176,7 @@ $$
 
 $$
 \begin{align}
-\mathbb{E}_\mathcal{D}[(y(\boldsymbol{x})-\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})])(\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})]-\mathbb{E}[y_t|\boldsymbol{x}])]
+&\mathbb{E}_\mathcal{D}[(y(\boldsymbol{x})-\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})])(\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})]-\mathbb{E}[y_t|\boldsymbol{x}])]\\
 &=
 \mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})-\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D})]](\mathbb{E}_\mathcal{D}[y(\boldsymbol{x};\mathcal{D}]-\mathbb{E}[y_t|\boldsymbol{x}])\\
 &=
@@ -193,6 +197,7 @@ $$
 となる. １項目
 をバリアンスという。
 第２項目を二乗バイアスという.
+（２項目の外側にある $$\mathbb{E}_\mathcal{D}$$）は消して良い筈（中身がモデル $$y$$ に対して定数だから）
 
 # これらのお気持ち
 
@@ -209,6 +214,8 @@ $$
 理想的な函数と実際の値とのズレを表している.
 
 モデルの複雑さによってこれらの値が変化する.PRMLなどでは正則化項の寄与 (要するに $$\lambda$$ ) を変化させてバイアスとバリアンスのトレードオフを議論している.
+
+PRML p 150 p の図3.6をみてください。
 
 # バイアス・バリアンス分解は贅沢だ(?).
 
