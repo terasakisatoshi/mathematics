@@ -7,3 +7,4 @@
 * [バイアス・バリアンス分解](src/bias_variance.md)
 * [ベイス推定から見た線形モデル](src/bayesian_linear.md)
 * [エビデンス](src/evidence.md)
+* [参考文献](src/reference.md)
